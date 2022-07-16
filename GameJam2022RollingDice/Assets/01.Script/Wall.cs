@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public Collider collider;
-    public float fixForce = 300f;
+    public float fixForce = 50f;
     public Vector3 vel;
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,20 @@ public class Wall : MonoBehaviour
             //collider.isTrigger = false;
             DiceRoll diceRoll = FindObjectOfType<DiceRoll>();
             diceRoll.WallClose();
-            diceRoll.rigidbody.AddForce(vel * fixForce);
+
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+
+        if (other.gameObject.CompareTag("Dice"))
+        {
+            float randomX = Random.Range(vel.x * 0.8f, vel.x);
+            float randomY = Random.Range(vel.y * 0.8f, vel.y);
+            float randomZ = Random.Range(vel.z * 0.8f, vel.z);
+            Vector3 _vel = new Vector3(randomX, randomY, randomZ);
+            other.rigidbody.AddForce(_vel * fixForce);
         }
     }
 }
