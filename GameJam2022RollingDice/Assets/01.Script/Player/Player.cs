@@ -191,6 +191,7 @@ public class Player : MonoBehaviour
         DiceManager.Instance.GetRandomDiceNum(); // 새로운 주사위랜덤값 받아오고
         Skillfloors.Clear();
         Changefloors.Clear();
+        cantMoveDir = 0;
         isMyTurn = true;
         isSkilling = false;
         isCanMove = true;

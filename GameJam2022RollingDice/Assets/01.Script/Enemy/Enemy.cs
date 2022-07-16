@@ -48,13 +48,24 @@ public class Enemy : MonoBehaviour
         for(int i = 0; i < count; i++)
         {
             Debug.Log("몬스터어택");
-            player.GetComponent<Player>().CurrentHp -= atk;
+            if (player.GetComponent<Player>().ShiledGauge >= atk)
+            {
+                player.GetComponent<Player>().ShiledGauge -= atk;
+            }
+            else if (player.GetComponent<Player>().ShiledGauge == 0)
+            {
+                player.GetComponent<Player>().CurrentHp -= atk;
+            }
+            else if(player.GetComponent<Player>().ShiledGauge < atk)
+            {
+                int num = atk - player.GetComponent<Player>().ShiledGauge;
+                player.GetComponent<Player>().ShiledGauge = 0;
+                player.GetComponent<Player>().CurrentHp -= num;
+            }
             UIManager.Instance.SetUI();
             yield return new WaitForSeconds(1f);
             DiceManager.Instance.MinusDice();
         }
         player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
-
-
     }
 }
