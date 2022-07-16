@@ -134,3 +134,90 @@ Received Import Request.
   path: Assets/Scenes/SampleScene.unity
   artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46d728c85cdd25b46026a0bb391c1a62') in 0.012802 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 72.586772 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(9fc0d4010bbf28b4594072e72b8655ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e07ad670a92a90d622bc2d9386fd064a') in 0.004513 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 20.168139 seconds.
+  path: Assets/Scenes/DiceRoll.unity
+  artifactKey: Guid(d4e1e8721be0d3a48937b1dabd6bdda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/DiceRoll.unity using Guid(d4e1e8721be0d3a48937b1dabd6bdda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed7619c4a81bcda6e50a9c8c75f7ef5b') in 0.007694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 14.210381 seconds.
+  path: Assets/Scenes/DiceRoll.unity
+  artifactKey: Guid(d4e1e8721be0d3a48937b1dabd6bdda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/DiceRoll.unity using Guid(d4e1e8721be0d3a48937b1dabd6bdda6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09968b6cad06ee4bb9445fe3febce4dd') in 0.004298 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2139.511179 seconds.
+  path: Assets/01.Script
+  artifactKey: Guid(07f6fdeda7c3878498608e3f9db942e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/01.Script using Guid(07f6fdeda7c3878498608e3f9db942e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '753e5c729cbbca5c8d75632d8f77da06') in 0.403258 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.132488 seconds.
+  path: Assets/01.Script/DiceRoll.cs
+  artifactKey: Guid(610607fd82fc0b04d815d0297401c4f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/01.Script/DiceRoll.cs using Guid(610607fd82fc0b04d815d0297401c4f1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f288b3f6bd2e41c982e04abb5139165f') in 0.064485 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.579646 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.35 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.470 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1473ms)
+		BeginReloadAssembly (300ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (28ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (94ms)
+		EndReloadAssembly (1078ms)
+			LoadAssemblies (172ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (358ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (55ms)
+			SetupLoadedEditorAssemblies (421ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (6ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (137ms)
+				ProcessInitializeOnLoadAttributes (240ms)
+				ProcessInitializeOnLoadMethodAttributes (19ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (3ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.47 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 1505 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 71.1 MB.
+System memory in use after: 71.2 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1950.
+Total: 3.472700 ms (FindLiveObjects: 0.137200 ms CreateObjectMapping: 0.057300 ms MarkObjects: 3.116700 ms  DeleteObjects: 0.160400 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
