@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    private Collider collider;
+    public Collider collider;
+    public float fixForce = 300f;
+    public Vector3 vel;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,10 @@ public class Wall : MonoBehaviour
     {
         if (other.CompareTag("Dice"))
         {
-            collider.isTrigger = false;
+            //collider.isTrigger = false;
+            DiceRoll diceRoll = FindObjectOfType<DiceRoll>();
+            diceRoll.WallClose();
+            diceRoll.rigidbody.AddForce(vel * fixForce);
         }
     }
 }

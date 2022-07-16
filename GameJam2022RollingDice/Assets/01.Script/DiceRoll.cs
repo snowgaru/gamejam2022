@@ -23,17 +23,23 @@ public class DiceRoll : MonoBehaviour
     [SerializeField]
     public DiceSide[] diceSide;
 
-    private Rigidbody rigidbody;
+    public Rigidbody rigidbody;
+    [SerializeField]
+    private Wall[] wall;
+
+    [SerializeField]
     private bool isRolled = true;
+    [SerializeField]
     private bool isStopped = false;
-    private float rollPosition = 10f;
-    private float checkPosition = 9f;
+    private float rollPosition = 9f;
+    private float checkPosition = 0f;
     private int diceValue = 0;
     private float rollForce = 1000;
     // Start is called before the first frame update
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
+        wall = FindObjectsOfType<Wall>();
     }
 
     // Update is called once per frame
@@ -48,9 +54,69 @@ public class DiceRoll : MonoBehaviour
         {
             if (transform.position.y >= checkPosition) { }
             else
+            {
                 isStopped = true;
+            }
         }
 
+        if (isStopped)
+        {
+            if (isRolled)
+            {
+                //CheckFixation();
+                CheckSideValue();
+            }
+        }
+    }
+
+    private void RollStart()
+    {
+        isRolled = true;
+        isStopped = false;
+
+        for (int i = 0; i < wall.Length; i++)
+        {
+            wall[i].collider.isTrigger = true;
+        }
+
+        for (int i = 0; i < diceSide.Length; i++)
+        {
+            diceSide[i].isColling = false;
+        }
+        transform.position = new Vector3(rollPosition, 0, 0);
+
+        float rotationX = Random.Range(0, 360);
+        float rotationY = Random.Range(0, 360);
+        float rotationZ = Random.Range(0, 360);
+
+        float force = Random.Range(rollForce * 0.9f, rollForce * 1.1f);
+        //transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
+        rigidbody.AddForce(-Vector3.right * force);
+
+    }
+
+    public void CheckFixation()
+    {
+        bool fixation = true;
+        for (int i = 0; i < diceSide.Length; i++)
+        {
+            if (diceSide[i].isColling)
+            {
+                fixation = false;
+                break;
+            }
+        }
+        if (fixation)
+        {
+            float fixationForce = Random.Range(rollForce * 0.3f, rollForce * 0.8f);
+            rigidbody.AddForce(-Vector3.right * fixationForce);
+            Debug.Log("Fixation Reroll");
+        }
+    }
+
+    public void CheckSideValue()
+    {
         if (isStopped && isRolled)
         {
             isRolled = false;
@@ -66,22 +132,11 @@ public class DiceRoll : MonoBehaviour
         }
     }
 
-    private void RollStart()
+    public void WallClose()
     {
-        isRolled = true;
-        isStopped = false;
-        for (int i = 0; i < diceSide.Length; i++)
+        for (int i = 0; i < wall.Length; i++)
         {
-            diceSide[i].isColling = false;
+            wall[i].collider.isTrigger = false;
         }
-        transform.position = new Vector3(4, 0, 0);
-
-        float rotationX = Random.Range(0, 360);
-        float rotationY = Random.Range(0, 360);
-        float rotationZ = Random.Range(0, 360);
-
-        transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
-        float force = Random.Range(rollForce * 0.9f, rollForce * 1.1f);
-        rigidbody.AddForce(-transform.right * force);
     }
 }
