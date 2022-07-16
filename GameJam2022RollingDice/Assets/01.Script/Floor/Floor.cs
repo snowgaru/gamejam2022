@@ -41,7 +41,7 @@ public class Floor : MonoBehaviour
     {
         for(int i = 1; i <= 20; i++)
         {
-            transform.position = new Vector3(transform.position.x, 5 - (0.2f * i), transform.position.z);
+            transform.position = new Vector3(transform.position.x, 9 - (0.4f * i), transform.position.z);
             yield return new WaitForSeconds(0.005f);
         }
 

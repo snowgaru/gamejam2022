@@ -25,13 +25,14 @@ public class GridManager : MonoBehaviour
         {
             for (int j = 0; j < column; j++)
             {
-                Instantiate(Floor, new Vector3(-7.15f + (i * 1.5f), 5, 3 - (j * 1.5f)), Quaternion.identity, FloorParent.transform);
+                Instantiate(Floor, new Vector3(-7.15f + (i * 1.5f), 10, 3 - (j * 1.5f)), Quaternion.identity, FloorParent.transform);
                 yield return new WaitForSeconds(0.1f);
             }
         }
         yield return new WaitForSeconds(0.5f);
         CreatePlayer();
         CreateMonster();
+        FloorManager.Instance.GetFloors(row * column);
         UIManager.Instance.GetPlayerAndEnemy();//플레이어와 에너미 생성된거 가져옴
         UIManager.Instance.SetUI();
     }

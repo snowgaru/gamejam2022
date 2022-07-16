@@ -34,8 +34,6 @@ public class DiceManager : MonoBehaviour
 
     public int DiceResult;
 
-    
-
     void Start()
     {
         GetRandomDiceNum();

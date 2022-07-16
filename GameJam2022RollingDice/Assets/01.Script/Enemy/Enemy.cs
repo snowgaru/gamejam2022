@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
         int count = DiceManager.Instance.DiceResult;
         for(int i = 0; i < count; i++)
         {
+            DiceManager.Instance.MinusDice();
             Debug.Log("몬스터어택");
             if (player.GetComponent<Player>().ShiledGauge >= atk)
             {
@@ -64,7 +65,7 @@ public class Enemy : MonoBehaviour
             }
             UIManager.Instance.SetUI();
             yield return new WaitForSeconds(1f);
-            DiceManager.Instance.MinusDice();
+ 
         }
         player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
     }
