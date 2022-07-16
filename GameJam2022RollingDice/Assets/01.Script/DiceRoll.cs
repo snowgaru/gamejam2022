@@ -125,7 +125,7 @@ public class DiceRoll : MonoBehaviour
             {
                 if (diceSide[i].isColling)
                 {
-                    diceValue = diceSide[i].sideValue;
+                    diceValue = 7 - diceSide[i].sideValue;
                     Debug.Log(diceValue);
                 }
             }
