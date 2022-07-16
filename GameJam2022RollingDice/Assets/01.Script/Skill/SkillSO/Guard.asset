@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6066f43c86ef984bb8c15c4fda8ee37, type: 3}
   m_Name: Guard
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   icon: {fileID: 21300000, guid: b47c2a85890f1cb4390b74e5f561a892, type: 3}
   effect: {fileID: 0}
   isGuard: 1

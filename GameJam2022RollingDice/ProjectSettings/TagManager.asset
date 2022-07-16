@@ -4,8 +4,23 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+  - Floor
+  - Enemy
+=======
   - Stand
   - Dice
+>>>>>>> 57853d9fd0975f565f7181b0b3d040bbb7e21982
+=======
+  - Stand
+  - Dice
+>>>>>>> 57853d9fd0975f565f7181b0b3d040bbb7e21982
+=======
+  - Stand
+  - Dice
+>>>>>>> 57853d9fd0975f565f7181b0b3d040bbb7e21982
   layers:
   - Default
   - TransparentFX

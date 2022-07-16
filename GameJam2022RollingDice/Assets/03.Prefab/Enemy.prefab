@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8884666969389555153
+--- !u!1 &2586090439934565933
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5115728682327216619}
-  - component: {fileID: 4889448131267715156}
-  - component: {fileID: 2658710267338509776}
+  - component: {fileID: 2586090439934565935}
+  - component: {fileID: 2586090439934565932}
+  - component: {fileID: 2806691345785760833}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
+  m_Name: Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5115728682327216619
+--- !u!4 &2586090439934565935
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884666969389555153}
+  m_GameObject: {fileID: 2586090439934565933}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalPosition: {x: 5.54, y: 1, z: -1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!212 &4889448131267715156
+--- !u!212 &2586090439934565932
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884666969389555153}
+  m_GameObject: {fileID: 2586090439934565933}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,48 +72,38 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 29135b5baf0c7124fac13cc2cd69e692, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9e69b80d4f7e95744aea35eab1ad4727, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 5.12}
+  m_Size: {x: 1.78, y: 2.29}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2658710267338509776
+--- !u!114 &2806691345785760833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8884666969389555153}
+  m_GameObject: {fileID: 2586090439934565933}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdab6f16d84739641af4b38f90e7bc38, type: 3}
+  m_Script: {fileID: 11500000, guid: e21e082bc82282144aae3eb9c02dce8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHp: 100
   CurrentHp: 100
-  ShiledGauge: 0
-  isCanMove: 0
-  isMyTurn: 1
-  isSkilling: 0
-  isSpawn: 0
-  isFinish: 0
-  CurrentPos: {x: 0, y: 0}
-  Skillfloors: []
-  Changefloors: []
-  currentFloor: {fileID: 0}
-  previousFloor: {fileID: 0}
-  MyTurnStartEvent:
+  AttackPattern: 
+  AttackStartEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2658710267338509776}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: MyturnSetting
+      - m_Target: {fileID: 2806691345785760833}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: Attack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -123,4 +113,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  enemy: {fileID: 0}
+  player: {fileID: 0}

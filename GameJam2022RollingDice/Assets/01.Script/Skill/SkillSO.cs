@@ -7,7 +7,7 @@ using UnityEngine.Events;
 //[CreateAssetMenu(menuName = "SO/Skill/SKillSO")]
 public class SkillSO : ScriptableObject
 {
-    public float damage;
+    public int damage;
     public Sprite icon;
     public GameObject effect = null;
     public bool isGuard;
