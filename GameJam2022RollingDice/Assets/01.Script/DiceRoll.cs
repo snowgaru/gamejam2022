@@ -24,14 +24,12 @@ public class DiceRoll : MonoBehaviour
     public DiceSide[] diceSide;
 
     private Rigidbody rigidbody;
-
     private bool isRolled = true;
-
     private bool isStopped = false;
-
     private float rollPosition = 10f;
     private float checkPosition = 9f;
     private int diceValue = 0;
+    private float rollForce = 1000;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,12 +74,14 @@ public class DiceRoll : MonoBehaviour
         {
             diceSide[i].isColling = false;
         }
-        transform.position = new Vector3(transform.position.x, rollPosition, transform.position.z);
+        transform.position = new Vector3(4, 0, 0);
 
         float rotationX = Random.Range(0, 360);
         float rotationY = Random.Range(0, 360);
         float rotationZ = Random.Range(0, 360);
 
         transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
+        float force = Random.Range(rollForce * 0.9f, rollForce * 1.1f);
+        rigidbody.AddForce(-transform.right * force);
     }
 }
