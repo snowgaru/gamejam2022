@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class GridManager : MonoBehaviour
     public GameObject FloorParent;
 
     public GameObject Player;
+    public GameObject Enemy;
 
     public int row = 5; //가로 갯수
     public int column = 5; //세로 갯수
@@ -28,7 +30,15 @@ public class GridManager : MonoBehaviour
             }
         }
         yield return new WaitForSeconds(0.5f);
-        CreatePlayer();   
+        CreatePlayer();
+        CreateMonster();
+        UIManager.Instance.GetPlayerAndEnemy();//플레이어와 에너미 생성된거 가져옴
+        UIManager.Instance.SetUI();
+    }
+
+    private void CreateMonster()
+    {
+        GameObject enemy = Instantiate(Enemy, new Vector3(6, 5, -1), Quaternion.Euler(new Vector3(90,0,0)) );
     }
 
     public void CreatePlayer()
