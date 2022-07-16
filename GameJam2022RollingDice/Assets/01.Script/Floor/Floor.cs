@@ -13,6 +13,7 @@ public class Floor : MonoBehaviour
 
     public bool isChange; //변경되야하는 바닥인가?
     public bool isFinish; //맨 마지막 도착한 바닥인가?
+    public bool isCritical; //크리티컬이 되는 바닥인가?
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class Floor : MonoBehaviour
 
         StartCoroutine(MoveY()); //오브젝트 y축 떨어트리기;
     }
+
 
     public void ChangeSkill() //랜덤스킬 및 아이콘 세팅
     {

@@ -9,7 +9,9 @@ public class Enemy : MonoBehaviour
     public int CurrentHp = 100;
 
     public int atk = 10; // 패턴 만들기 전 임시;
-    public int[] AttackPattern;
+    public int patternCount;
+
+    public bool isPassive;
 
     public UnityEvent AttackStartEvent;
 
@@ -30,43 +32,10 @@ public class Enemy : MonoBehaviour
 
     }
     
-    public void Attack()
+    public virtual void Attack()
     {
         DiceManager.Instance.GetRandomDiceNum();
-
-        StartCoroutine(AttackCor());
     }
 
-    private IEnumerator AttackCor()    
-    {
-        if(player == null)
-        {
-            player = GameObject.FindGameObjectWithTag("Player");
-        }
-
-        int count = DiceManager.Instance.DiceResult;
-        for(int i = 0; i < count; i++)
-        {
-            DiceManager.Instance.MinusDice();
-            Debug.Log("몬스터어택");
-            if (player.GetComponent<Player>().ShiledGauge >= atk)
-            {
-                player.GetComponent<Player>().ShiledGauge -= atk;
-            }
-            else if (player.GetComponent<Player>().ShiledGauge == 0)
-            {
-                player.GetComponent<Player>().CurrentHp -= atk;
-            }
-            else if(player.GetComponent<Player>().ShiledGauge < atk)
-            {
-                int num = atk - player.GetComponent<Player>().ShiledGauge;
-                player.GetComponent<Player>().ShiledGauge = 0;
-                player.GetComponent<Player>().CurrentHp -= num;
-            }
-            UIManager.Instance.SetUI();
-            yield return new WaitForSeconds(1f);
- 
-        }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
-    }
+    
 }

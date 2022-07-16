@@ -33,6 +33,7 @@ public class GridManager : MonoBehaviour
         CreatePlayer();
         CreateMonster();
         FloorManager.Instance.GetFloors(row * column);
+        FloorManager.Instance.SelectRandomFloor();
         UIManager.Instance.GetPlayerAndEnemy();//플레이어와 에너미 생성된거 가져옴
         UIManager.Instance.SetUI();
     }

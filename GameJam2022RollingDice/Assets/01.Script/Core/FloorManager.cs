@@ -42,4 +42,14 @@ public class FloorManager : MonoBehaviour
             floors.Add(floor);
         }
     }
+
+    public void SelectRandomFloor()
+    {
+        Debug.Log("½ÇÇàµÊ");
+
+        int random = Random.Range(0, floors.Count);
+        Debug.Log(random);
+        floors[random].isCritical = true;
+        floors[random].SetMaterial(Color.yellow);
+    }
 }
