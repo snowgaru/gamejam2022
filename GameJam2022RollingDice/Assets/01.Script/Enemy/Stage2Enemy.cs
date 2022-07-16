@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Stage2Enemy : Enemy
 {
-    
-    private float Strong = 1.6f; // 15µ©
-    private float Weak = 0.8f; // 7
-   
+
+    private float Strong = 1.8f; // 15ï¿½ï¿½
+    private float Weak = 1f; // 7
+
     public override void Attack()
     {
         base.Attack();
 
         int random = Random.Range(0, 2);
-        // 0 : ½¯µå°¡ ÀÖÀ»°æ¿ì ³ôÀºµ¥¹ÌÁö ¾øÀ»°æ¿ì ÀûÀºµ¥¹ÌÁö 
-        // 1 : ½¯µå°¡ ÀÖÀ»°æ¿ì ³·Àºµ¥¹ÌÁö ¾øÀ»°æ¿ì ³ôÀºµ¥¹ÌÁö
+        // 0 : ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
+        // 1 : ï¿½ï¿½ï¿½å°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
         switch (random)
         {
             case 0:
-                Debug.Log("Ã¹¹øÂ° ½ºÅ³ »ç¿ë");
+                Debug.Log("Ã¹ï¿½ï¿½Â° ï¿½ï¿½Å³ ï¿½ï¿½ï¿½");
                 StartCoroutine(Skill0AttackCor());
                 break;
 
             case 1:
-                Debug.Log("µÎ¹øÂ° ½ºÅ³ »ç¿ë");
+                Debug.Log("ï¿½Î¹ï¿½Â° ï¿½ï¿½Å³ ï¿½ï¿½ï¿½");
                 StartCoroutine(Skill1AttackCor());
                 break;
 
@@ -45,16 +45,16 @@ public class Stage2Enemy : Enemy
         for (int i = 0; i < count; i++)
         {
             DiceManager.Instance.MinusDice();
-            
+
             if (player.GetComponent<Player>().ShiledGauge >= (int)(atk * Strong))
             {
-                Debug.Log("½Çµå°ÔÀÌÁö - " + (atk * Strong));
+                Debug.Log("ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ - " + (atk * Strong));
                 player.GetComponent<Player>().ShiledGauge -= (int)(atk * Strong);
             }
 
             else if (player.GetComponent<Player>().ShiledGauge <= 0)
             {
-                Debug.Log("Ã¼·Â - " + (int)(atk * Weak));
+                Debug.Log("Ã¼ï¿½ï¿½ - " + (int)(atk * Weak));
                 player.GetComponent<Player>().CurrentHp -= (int)(atk * Weak);
             }
 
