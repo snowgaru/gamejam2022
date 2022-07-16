@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     public bool isFinish; //마지막 위치의 바닥은 체인지플로어 리스트에 안들어가게 해주는거
 
     public bool isSetCritical; //트루일 경우 크리티컬플로어 설정이 필요함
+
+    public bool isCantMoveDebuf; //3번째 보스의 이동 불가 디버프
+    public int CantMoveDebuf;
     //public bool isSetting; //세팅을 시작해야한다.
 
     public Vector2 CurrentPos;
@@ -62,6 +65,9 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
+            //보스 3의 이동 불가 체크
+            if (isCantMoveDebuf && CantMoveDebuf == 1) return;
+
             if (cantMoveDir == 4) return; // 되돌아가기 체크 (반대방향의 숫자)
             if (CurrentPos.y + 1 > column - 1) return; //바닥 체크
             isCanMove = false;
@@ -70,6 +76,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (isCantMoveDebuf && CantMoveDebuf == 2) return;
+
             if (cantMoveDir == 3) return; // 되돌아가기 체크 (반대방향의 숫자)
             if (CurrentPos.x + -1 < 0) return; // 바닥 체크
             isCanMove = false;
@@ -78,6 +86,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
+            if (isCantMoveDebuf && CantMoveDebuf == 4) return;
+
             if (cantMoveDir == 2) return; // 되돌아가기 체크 (반대방향의 숫자)
             if (CurrentPos.x + 1 > row - 1) return; // 바닥 체크
             isCanMove = false;
@@ -86,6 +96,8 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
+            if (isCantMoveDebuf && CantMoveDebuf == 3) return;
+
             if (cantMoveDir == 1) return; // 되돌아가기 체크 (반대방향의 숫자)
             if (CurrentPos.y + -1 < 0) return; // 바닥 체크
             isCanMove = false;
@@ -107,6 +119,11 @@ public class Player : MonoBehaviour
                 {
                     if (previousFloor.isCritical == true)
                         previousFloor?.SetMaterial(Color.yellow);   
+                    else
+                        previousFloor?.SetMaterial(Color.white);
+
+                    if (previousFloor.isDebuf == true)
+                        previousFloor?.SetMaterial(Color.magenta);
                     else
                         previousFloor?.SetMaterial(Color.white);
                 }
@@ -187,14 +204,18 @@ public class Player : MonoBehaviour
                     break;
             }
 
+            if (Skillfloors[i].isDebuf == true)
+            {
+                CurrentHp -= 15;
+            }
+
             if (Skillfloors[i].isCritical == true)
             {
                 Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
                 Skillfloors[i].isCritical = false;
                 Skillfloors[i].SetMaterial(Color.white);
                 isSetCritical = true;
-            } //이거 하고 뒤지는거 체크해야함 개중요함 제발
-  
+            } //이거 하고 체력 0되는거 체크해야함 개중요함 제발
         }
         
        

@@ -8,8 +8,7 @@ public class GridManager : MonoBehaviour
     public GameObject Floor;
     public GameObject FloorParent;
 
-    public GameObject Player;
-    public GameObject Enemy;
+    public GameObject Player;    public GameObject Enemy;
 
     public int row = 5; //°¡·Î °¹¼ö
     public int column = 5; //¼¼·Î °¹¼ö
@@ -17,6 +16,7 @@ public class GridManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(CreateFloor());
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public IEnumerator CreateFloor()
