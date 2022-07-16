@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
-    void Start()
+    public virtual void Start()
     {
         StartCoroutine(MoveY());
     }

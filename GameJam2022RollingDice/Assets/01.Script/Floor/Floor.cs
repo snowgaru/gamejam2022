@@ -15,6 +15,8 @@ public class Floor : MonoBehaviour
     public bool isFinish; //맨 마지막 도착한 바닥인가?
     public bool isCritical; //크리티컬이 되는 바닥인가?
 
+    public bool isDebuf; //3번째 보스의 디버프 바닥인가?
+
     void Start()
     {
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -69,6 +71,18 @@ public class Floor : MonoBehaviour
     public void SetMaterial(Color color)
     {
         transform.GetComponent<Renderer>().material.color = color;
+    }
+
+    public void MakeDebuf()
+    {
+        SetMaterial(Color.magenta);
+        isDebuf = true;
+    }
+
+    public void DeleteDebuf()
+    {
+        SetMaterial(Color.white);
+        isDebuf = false;
     }
     
 }
