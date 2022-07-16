@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public bool isSpawn; //처음 스폰했을때 바닥에 쏘는 레이캐스트가 리스트에 안들어가게 막아주는것
     public bool isFinish; //마지막 위치의 바닥은 체인지플로어 리스트에 안들어가게 해주는거
 
+    public bool isSetCritical; //트루일 경우 크리티컬플로어 설정이 필요함
     //public bool isSetting; //세팅을 시작해야한다.
 
     public Vector2 CurrentPos;
@@ -102,9 +103,16 @@ public class Player : MonoBehaviour
         {
             if (hit.transform.CompareTag("Floor"))
             {
-                previousFloor?.SetMaterial(Color.white);
+                if (previousFloor != null)
+                {
+                    if (previousFloor.isCritical == true)
+                        previousFloor?.SetMaterial(Color.yellow);   
+                    else
+                        previousFloor?.SetMaterial(Color.white);
+                }
                 previousFloor = currentFloor;
                 previousFloor?.SetMaterial(Color.red);
+
 
                 if (previousFloor != null) { Changefloors.Add(currentFloor); }
 
@@ -126,6 +134,11 @@ public class Player : MonoBehaviour
         previousFloor.SetMaterial(Color.white); //빨간색으로 바뀐 전 바닥 바꿔주고
         for(int i = 0; i < Skillfloors.Count; i++) //리스트에 잇는 숫자만큼 스킬 사용
         {
+            if(Skillfloors[i].isCritical == true)
+            {
+                Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage *= 2;
+            }
+
             switch(Skillfloors[i].currentSkill)
             {
                 case 0:
@@ -173,6 +186,15 @@ public class Player : MonoBehaviour
                     yield return new WaitForSeconds(1f);
                     break;
             }
+
+            if (Skillfloors[i].isCritical == true)
+            {
+                Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
+                Skillfloors[i].isCritical = false;
+                Skillfloors[i].SetMaterial(Color.white);
+                isSetCritical = true;
+            } //이거 하고 뒤지는거 체크해야함 개중요함 제발
+  
         }
         
        
@@ -189,12 +211,19 @@ public class Player : MonoBehaviour
     public void MyturnSetting()
     {
         DiceManager.Instance.GetRandomDiceNum(); // 새로운 주사위랜덤값 받아오고
+
+        if(isSetCritical) { isSetCritical = false; FloorManager.Instance.SelectRandomFloor(); } //만약 크리티컬플로어를 재설정해야한다면 하면되죠
+
+        ShiledGauge = 0; //쉴드게이지 초기화
+        UIManager.Instance.SetUI();
+
         Skillfloors.Clear();
         Changefloors.Clear();
         cantMoveDir = 0;
         isMyTurn = true;
         isSkilling = false;
         isCanMove = true;
+
     }
 
     public IEnumerator ChangeFloorIcon(Floor floor)

@@ -97,7 +97,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHp: 100
   CurrentHp: 100
-  AttackPattern: 
+  atk: 8
+  patternCount: 0
+  isPassive: 0
   AttackStartEvent:
     m_PersistentCalls:
       m_Calls:
