@@ -55,20 +55,25 @@ public class Player : MonoBehaviour
         StartCoroutine(MoveY());
     }
 
+    Vector3 barVec;
+    float hp;
+    float fullhp;
+
     void Update()
     {
         if (CurrentHp > MaxHp)
         {
             CurrentHp = MaxHp;
         }
-        Vector3 barVec = UIManager.Instance.PlayerHpBar.transform.localScale;
-        float hp = CurrentHp;
-        float fullhp = MaxHp;
+        barVec = UIManager.Instance.PlayerHpBar.transform.localScale;
+        hp = CurrentHp;
+        fullhp = MaxHp;
         //TempNumHp = CurrentHp / fullhp;
         UIManager.Instance.PlayerHpBar.transform.localScale = new Vector3(hp / fullhp, barVec.y, barVec.z);
         barVec = UIManager.Instance.PlayerGuardBar.transform.localScale;
         TempNumGd = ShiledGauge;
         UIManager.Instance.PlayerGuardBar.transform.localScale = new Vector3(TempNumGd / 100, barVec.y, barVec.z);
+
         //test
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -102,7 +107,13 @@ public class Player : MonoBehaviour
             //���� 3�� �̵� �Ұ� üũ
             if (isCantMoveDebuf && CantMoveDebuf == 1) return;
 
-            if (cantMoveDir == 4) return; // �ǵ��ư��� üũ (�ݴ������ ����)
+            if (cantMoveDir == 4)
+            {
+                CurrentHp -= 20;
+                CameraManager.Instance.ShakeVoid(0.1f, 0.25f);
+            }
+
+            //return; // �ǵ��ư��� üũ (�ݴ������ ����)
             if (CurrentPos.y + 1 > column - 1) return; //�ٴ� üũ
             isCanMove = false;
             cantMoveDir = 1;
@@ -140,10 +151,6 @@ public class Player : MonoBehaviour
             isCanMove = false;
             cantMoveDir = 4;
             StartCoroutine(MoveXZ(Vector2.down));
-        }
-        if (playerRolled)
-        {
-
         }
     }
 
