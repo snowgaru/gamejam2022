@@ -39,6 +39,7 @@ public class DiceManager : MonoBehaviour
         //GetRandomDiceNum();
     }
 
+
     public void MinusDice()
     {
         DiceResult -= 1;

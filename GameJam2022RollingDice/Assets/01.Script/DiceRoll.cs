@@ -47,11 +47,18 @@ public class DiceRoll : MonoBehaviour
     public bool isColDontFix = false;
 
     private Player player;
-    private Enemy enemy;
+    private Enemy enemy; public AudioClip[] clips; // 0 총쏘기  1 히트  2 재장전  3 뒤질때
+    public AudioSource audioSource;
+    public void PlayEffect(int num)
+    {
+        audioSource.clip = clips[num];
+        audioSource.PlayOneShot(clips[num]);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rigidbody = GetComponent<Rigidbody>();
         wall = FindObjectsOfType<Wall>();
     }
@@ -189,6 +196,7 @@ public class DiceRoll : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+
         if (other.gameObject.CompareTag("DontFixation"))
         {
             isColDontFix = true;
@@ -196,6 +204,7 @@ public class DiceRoll : MonoBehaviour
     }
     private void OnCollisionExit(Collision other)
     {
+        PlayEffect(0);
         if (other.gameObject.CompareTag("DontFixation"))
         {
             isColDontFix = false;
