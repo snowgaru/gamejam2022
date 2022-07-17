@@ -48,6 +48,8 @@ public class UIManager : MonoBehaviour
     public GameObject NextScenePanel;
 
 
+    public GameObject PlayerHpBar;
+
     public void GetPlayerAndEnemy()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
