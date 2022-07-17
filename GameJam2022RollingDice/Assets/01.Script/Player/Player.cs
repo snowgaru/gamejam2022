@@ -143,19 +143,15 @@ public class Player : MonoBehaviour
                     if (previousFloor.isCritical == true)
                         previousFloor?.SetMaterial(Color.yellow);
                     else
-                        previousFloor?.SetMaterial(Color.black);
+                        previousFloor?.SetMaterial(Color.white);
 
                     if (previousFloor.isDebuf == true)
                         previousFloor?.SetMaterial(Color.magenta);
                     else
-                        previousFloor?.SetMaterial(Color.black);
+                        previousFloor?.SetMaterial(Color.white);
                 }
                 previousFloor = currentFloor;
                 previousFloor?.SetMaterial(Color.red);
-
-
-
-
 
                 currentFloor = hit.transform.GetComponent<Floor>();
 
@@ -176,7 +172,7 @@ public class Player : MonoBehaviour
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy");
         }
-        previousFloor.SetMaterial(Color.black); //���������� �ٲ� �� �ٴ� �ٲ��ְ�
+        previousFloor.SetMaterial(Color.white); //���������� �ٲ� �� �ٴ� �ٲ��ְ�
         for (int i = 0; i < Skillfloors.Count; i++) //����Ʈ�� �մ� ���ڸ�ŭ ��ų ���
         {
             if (Skillfloors[i].isCritical == true)
@@ -192,28 +188,34 @@ public class Player : MonoBehaviour
             {
                 case 0:
                     Debug.Log("����!");
-                    enemy.GetComponent<Enemy>().CurrentHp -=
-                        skillDamage;
+                    UIManager.Instance.PlayerSkillText.text = "Attack!";
+                    enemy.GetComponent<Enemy>().CurrentHp -= skillDamage;
                     //���� ����Ʈ ��ƼŬ ���
                     UIManager.Instance.SetUI();
-                    yield return new WaitForSeconds(0.1f);
                     StartCoroutine(ChangeFloorIcon(Changefloors[i]));
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.1f);
+                    CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
+                    yield return new WaitForSeconds(0.4f);
+  
+                    yield return new WaitForSeconds(0.2f);
 
                     break;
 
                 case 1:
                     Debug.Log("����!");
+                    UIManager.Instance.PlayerSkillText.text = "Shield!";
                     ShiledGauge += skillDamage;
                     UIManager.Instance.SetUI();
-                    yield return new WaitForSeconds(0.1f);
                     StartCoroutine(ChangeFloorIcon(Changefloors[i]));
-                    yield return new WaitForSeconds(0.25f);
+                    yield return new WaitForSeconds(0.7f);
+
+                    //yield return new WaitForSeconds(0.25f);
                     break;
 
                 case 2:
                     Debug.Log("��!");
-                    if (CurrentHp + Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage > 100)
+                    UIManager.Instance.PlayerSkillText.text = "Heal!";
+                    if (CurrentHp + Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage >= 100)
                     {
                         CurrentHp = 100;
                     }
@@ -222,15 +224,18 @@ public class Player : MonoBehaviour
                         CurrentHp += skillDamage;
                     }
                     UIManager.Instance.SetUI();
-                    yield return new WaitForSeconds(0.1f);
                     StartCoroutine(ChangeFloorIcon(Changefloors[i]));
-                    yield return new WaitForSeconds(0.25f);
+                    //yield return new WaitForSeconds(1f);
+
+                    yield return new WaitForSeconds(0.7f);
                     break;
 
                 default:
                     yield return new WaitForSeconds(1f);
                     break;
             }
+
+            UIManager.Instance.PlayerSkillText.text = " ";
 
             if (Skillfloors[i].isDebuf == true)
             {
@@ -241,7 +246,7 @@ public class Player : MonoBehaviour
             {
                 //Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
                 Skillfloors[i].isCritical = false;
-                Skillfloors[i].SetMaterial(Color.black);
+                Skillfloors[i].SetMaterial(Color.white);
                 isSetCritical = true;
             } //�̰� �ϰ� ü�� 0�Ǵ°� üũ�ؾ��� ���߿��� ����
 
@@ -289,8 +294,8 @@ public class Player : MonoBehaviour
         floor.ChangeSkill();
         //�ٲ������ ����Ʈ�� ��ƼŬ �߰� �ؾ��ҵ� �ϴ� ���򺯰����� �صα���
         floor.SetMaterial(Color.black);
-        yield return new WaitForSeconds(0.15f);
-        floor.SetMaterial(Color.black);
+        yield return new WaitForSeconds(0.5f);
+        floor.SetMaterial(Color.white);
     }
 
 

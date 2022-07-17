@@ -81,7 +81,7 @@ public class Floor : MonoBehaviour
 
     public void DeleteDebuf()
     {
-        SetMaterial(Color.black);
+        SetMaterial(Color.white);
         isDebuf = false;
     }
 
