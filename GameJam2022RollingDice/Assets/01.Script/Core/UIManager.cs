@@ -49,13 +49,17 @@ public class UIManager : MonoBehaviour
 
 
     public GameObject PlayerHpBar;
+    public GameObject PlayerGuardBar;
 
+    public GameObject EnemyHpBar;
+
+    public Text nextSkillTitle;
+    public Text nextSkillExplain;
     public void GetPlayerAndEnemy()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
         player = GameObject.FindGameObjectWithTag("Player");
     }
-
 
     public void SetUI()
     {

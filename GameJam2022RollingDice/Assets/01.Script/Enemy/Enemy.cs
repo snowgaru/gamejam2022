@@ -22,14 +22,12 @@ public class Enemy : MonoBehaviour
 
     protected int random;
 
-    [SerializeField]
-    protected Text nextSkillTitle;
-
-    [SerializeField]
-    protected Text nextSkillExplain;
-
     public void Update()
     {
+        Vector3 tempBar = UIManager.Instance.EnemyHpBar.transform.localScale;
+        float TempNum = CurrentHp;
+        float TempNum2 = MaxHp;
+        UIManager.Instance.EnemyHpBar.transform.localScale = new Vector3(TempNum / TempNum2, tempBar.y, tempBar.z);
         //test
         if (Input.GetKeyDown(KeyCode.P))
         {
