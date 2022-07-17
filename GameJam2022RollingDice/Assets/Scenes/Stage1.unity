@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Text: "You can move through WASD depending on the number of Dice Eyes\n\n\rThe
     place where the Piece have passed cannot come back\n\nYou can [ Attack / Guard
     / Recover ] according to the icon corresponding to the place the piece passed\n\nIf
-    the piece passes the yellow icon,\nYou'll [ Attack / Guard / Recover ] to Critical\n\nCritical
+    the piece arrives the yellow icon,\nYou'll [ Attack / Guard / Recover ] to Critical\n\nCritical
     [ Attack / Guard / Recover ] has double the power of normal [ Attack / Guard
     / Recover ]"
 --- !u!222 &67251992
@@ -1036,7 +1036,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 50
+  m_Text: 0
 --- !u!222 &542322539
 CanvasRenderer:
   m_ObjectHideFlags: 0
