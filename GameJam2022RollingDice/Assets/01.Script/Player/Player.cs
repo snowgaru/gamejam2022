@@ -171,6 +171,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator UseSkill()
     {
+        int skillDamage;
         if (enemy == null)
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy");
@@ -180,7 +181,11 @@ public class Player : MonoBehaviour
         {
             if (Skillfloors[i].isCritical == true)
             {
-                Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage *= 2;
+                skillDamage = Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage * 2;
+            }
+            else 
+            {
+                skillDamage = Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
             }
 
             switch (Skillfloors[i].currentSkill)
@@ -188,7 +193,7 @@ public class Player : MonoBehaviour
                 case 0:
                     Debug.Log("����!");
                     enemy.GetComponent<Enemy>().CurrentHp -=
-                        Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
+                        skillDamage;
                     //���� ����Ʈ ��ƼŬ ���
                     UIManager.Instance.SetUI();
                     yield return new WaitForSeconds(0.1f);
@@ -199,7 +204,7 @@ public class Player : MonoBehaviour
 
                 case 1:
                     Debug.Log("����!");
-                    ShiledGauge += Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
+                    ShiledGauge += skillDamage;
                     UIManager.Instance.SetUI();
                     yield return new WaitForSeconds(0.1f);
                     StartCoroutine(ChangeFloorIcon(Changefloors[i]));
@@ -214,7 +219,7 @@ public class Player : MonoBehaviour
                     }
                     else
                     {
-                        CurrentHp += Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
+                        CurrentHp += skillDamage;
                     }
                     UIManager.Instance.SetUI();
                     yield return new WaitForSeconds(0.1f);
@@ -234,7 +239,7 @@ public class Player : MonoBehaviour
 
             if (Skillfloors[i].isCritical == true)
             {
-                Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
+                //Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
                 Skillfloors[i].isCritical = false;
                 Skillfloors[i].SetMaterial(Color.white);
                 isSetCritical = true;
