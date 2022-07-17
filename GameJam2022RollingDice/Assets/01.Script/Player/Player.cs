@@ -78,7 +78,8 @@ public class Player : MonoBehaviour
         //    isCanMove = true;
         if (!isCanMove) return;
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && !Input.GetKeyDown(KeyCode.A)
+            && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
         {
             //���� 3�� �̵� �Ұ� üũ
             if (isCantMoveDebuf && CantMoveDebuf == 1) return;
@@ -89,7 +90,8 @@ public class Player : MonoBehaviour
             cantMoveDir = 1;
             StartCoroutine(MoveXZ(Vector2.up));
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) &&!Input.GetKeyDown(KeyCode.W)
+            && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
         {
             if (isCantMoveDebuf && CantMoveDebuf == 2) return;
 
@@ -99,7 +101,8 @@ public class Player : MonoBehaviour
             cantMoveDir = 2;
             StartCoroutine(MoveXZ(Vector2.left));
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKeyDown(KeyCode.W)
+            && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.A))
         {
             if (isCantMoveDebuf && CantMoveDebuf == 4) return;
 
@@ -109,7 +112,8 @@ public class Player : MonoBehaviour
             cantMoveDir = 3;
             StartCoroutine(MoveXZ(Vector2.right));
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.W)
+            && !Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
             if (isCantMoveDebuf && CantMoveDebuf == 3) return;
 
@@ -150,13 +154,13 @@ public class Player : MonoBehaviour
                 previousFloor?.SetMaterial(Color.red);
 
 
-                if (previousFloor != null) { Changefloors.Add(currentFloor); }
+                
 
 
                 currentFloor = hit.transform.GetComponent<Floor>();
 
-
-                if (isFinish) { isFinish = false; Changefloors.Add(previousFloor); }
+                if (previousFloor != null) { Changefloors.Add(currentFloor); }
+                if (isFinish) { isFinish = false; Changefloors.Add(currentFloor); }
 
                 if (isSpawn) { isSpawn = false; }
                 else { Skillfloors.Add(currentFloor); } //����ϴ� ��ų �ٴڵ�
