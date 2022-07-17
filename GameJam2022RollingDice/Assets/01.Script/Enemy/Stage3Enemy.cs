@@ -130,6 +130,7 @@ public class Stage3Enemy : Enemy
         Debug.Log(dontMoveInt);
 
         int count = DiceManager.Instance.DiceResult;
+        CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
         for (int i = 0; i < count; i++)
         {
             DiceManager.Instance.MinusDice();
@@ -179,6 +180,7 @@ public class Stage3Enemy : Enemy
         }
 
         int count = DiceManager.Instance.DiceResult;
+        CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
         for (int i = 0; i < count; i++)
         {
             DiceManager.Instance.MinusDice();

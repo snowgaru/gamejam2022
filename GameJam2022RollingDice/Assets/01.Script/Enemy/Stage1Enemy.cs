@@ -26,6 +26,7 @@ public class Stage1Enemy : Enemy
         for (int i = 0; i < count; i++)
         {
             DiceManager.Instance.MinusDice();
+            CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
             Debug.Log("몬스터어택");
             if (player.GetComponent<Player>().ShiledGauge >= atk)
             {

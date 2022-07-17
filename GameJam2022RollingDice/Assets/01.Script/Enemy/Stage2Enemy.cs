@@ -55,7 +55,7 @@ public class Stage2Enemy : Enemy
         for (int i = 0; i < count; i++)
         {
             DiceManager.Instance.MinusDice();
-
+            CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
             if (player.GetComponent<Player>().ShiledGauge >= (int)(atk * Strong))
             {
                 Debug.Log("�ǵ������ - " + (atk * Strong));
@@ -91,7 +91,7 @@ public class Stage2Enemy : Enemy
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
+        CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
         int count = DiceManager.Instance.DiceResult;
         for (int i = 0; i < count; i++)
         {

@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
 
     public void PlayerHPCheck()
     {
+
         if (player.GetComponent<Player>().CurrentHp <= 0)
         {
             UIManager.Instance.RestartPanelOn();

@@ -41,6 +41,8 @@ public class UIManager : MonoBehaviour
 
     public Text CurrentDiceNumText;
 
+    public Text PlayerSkillText;
+
     public GameObject player;
     public GameObject enemy;
 
@@ -63,6 +65,7 @@ public class UIManager : MonoBehaviour
 
     public void SetUI()
     {
+        //PlayerSkillText.text = " ";
         PlayerHPText.text = player.GetComponent<Player>().CurrentHp.ToString();
         PlayerShiledText.text = player.GetComponent<Player>().ShiledGauge.ToString();
         EnemyHPText.text = enemy.GetComponent<Enemy>().CurrentHp.ToString();
