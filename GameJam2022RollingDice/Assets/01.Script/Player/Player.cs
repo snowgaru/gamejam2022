@@ -42,6 +42,11 @@ public class Player : MonoBehaviour
     public bool playerRolled = false;
 
     private DiceRoll diceRoll;
+
+    public GameObject HealEffect;
+    public GameObject AttackEffect;
+    public GameObject GuardEffect;
+
     void Start()
     {
         diceRoll = FindObjectOfType<DiceRoll>();
@@ -291,11 +296,31 @@ public class Player : MonoBehaviour
 
     public IEnumerator ChangeFloorIcon(Floor floor)
     {
-        floor.ChangeSkill();
+        //if(floor)
+        switch (floor.currentSkill)
+        {
+            case 0:
+                Instantiate(AttackEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                break;
+
+            case 1:
+                Instantiate(GuardEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                break;
+
+            case 2:
+                Instantiate(HealEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                break;
+
+            default:
+
+                break;
+        }
         //�ٲ������ ����Ʈ�� ��ƼŬ �߰� �ؾ��ҵ� �ϴ� ���򺯰����� �صα���
         floor.SetMaterial(Color.black);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
+        floor.ChangeSkill();
         floor.SetMaterial(Color.white);
+        
     }
 
 

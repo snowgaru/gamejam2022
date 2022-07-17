@@ -103,6 +103,9 @@ MonoBehaviour:
   isSkilling: 0
   isSpawn: 0
   isFinish: 0
+  isSetCritical: 0
+  isCantMoveDebuf: 0
+  CantMoveDebuf: 0
   CurrentPos: {x: 0, y: 0}
   Skillfloors: []
   Changefloors: []
@@ -124,3 +127,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   enemy: {fileID: 0}
+  playerRolled: 0
+  HealEffect: {fileID: 8886175183018881422, guid: 310ed382d053deb47b5e009e5b3865c7, type: 3}
+  AttackEffect: {fileID: 2610491426864865150, guid: f8ae5da86387e654ebbb414d8f1c4f88, type: 3}
+  GuardEffect: {fileID: 3071013987822780551, guid: 26550bf068d0746419f3f37c6c4d8d4f, type: 3}
