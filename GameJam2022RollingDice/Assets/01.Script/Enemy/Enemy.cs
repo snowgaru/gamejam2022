@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     public int MaxHp = 100;
     public int CurrentHp = 100;
 
-    public int atk = 10; // ÆÐÅÏ ¸¸µé±â Àü ÀÓ½Ã;
+    public int atk = 10; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ó½ï¿½;
     public int patternCount;
 
     public bool isPassive;
@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
         StartCoroutine(MoveY());
     }
 
-    private IEnumerator MoveY() // °øÁß¿¡¼­ ¶³¾îÁö´Â ÄÚ·çÆ¾
+    private IEnumerator MoveY() // ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
     {
         for (int i = 1; i <= 50; i++)
         {
@@ -31,11 +31,14 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    
+
     public virtual void Attack()
     {
-        DiceManager.Instance.GetRandomDiceNum();
+        //DiceManager.Instance.GetRandomDiceNum();
+        //Debug.Log("Attack");
+        DiceRoll diceRoll = FindObjectOfType<DiceRoll>();
+        diceRoll.RollStart();
     }
 
-    
+
 }

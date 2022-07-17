@@ -11,22 +11,22 @@ public class Player : MonoBehaviour
     public int ShiledGauge;
 
 
-    public bool isCanMove; //¿òÁ÷ÀÏ¼ö ÀÕ´Â°¡
-    public bool isMyTurn = true; //³» ÅÏÀÎ°¡
-    public bool isSkilling; //½ºÅ³À» »ç¿ëÁßÀÎ°¡
+    public bool isCanMove; //ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½ ï¿½Õ´Â°ï¿½
+    public bool isMyTurn = true; //ï¿½ï¿½ ï¿½ï¿½ï¿½Î°ï¿½
+    public bool isSkilling; //ï¿½ï¿½Å³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î°ï¿½
 
-    public bool isSpawn; //Ã³À½ ½ºÆùÇßÀ»¶§ ¹Ù´Ú¿¡ ½î´Â ·¹ÀÌÄ³½ºÆ®°¡ ¸®½ºÆ®¿¡ ¾Èµé¾î°¡°Ô ¸·¾ÆÁÖ´Â°Í
-    public bool isFinish; //¸¶Áö¸· À§Ä¡ÀÇ ¹Ù´ÚÀº Ã¼ÀÎÁöÇÃ·Î¾î ¸®½ºÆ®¿¡ ¾Èµé¾î°¡°Ô ÇØÁÖ´Â°Å
+    public bool isSpawn; //Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´Ú¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Èµï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â°ï¿½
+    public bool isFinish; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ù´ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ã·Î¾ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Èµï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´Â°ï¿½
 
-    public bool isSetCritical; //Æ®·çÀÏ °æ¿ì Å©¸®Æ¼ÄÃÇÃ·Î¾î ¼³Á¤ÀÌ ÇÊ¿äÇÔ
+    public bool isSetCritical; //Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ Å©ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ã·Î¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½
 
-    public bool isCantMoveDebuf; //3¹øÂ° º¸½ºÀÇ ÀÌµ¿ ºÒ°¡ µð¹öÇÁ
+    public bool isCantMoveDebuf; //3ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ò°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     public int CantMoveDebuf;
-    //public bool isSetting; //¼¼ÆÃÀ» ½ÃÀÛÇØ¾ßÇÑ´Ù.
+    //public bool isSetting; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ñ´ï¿½.
 
     public Vector2 CurrentPos;
 
-    private int cantMoveDir = 0; // ÇÑ¹ø °£ ¹æÇâÀº ¸ø°¡°Ô ÇÏ´Â°Í // 1 À§ // 2  ¿Þ // 3 ¿À // 4 ¾Æ·¡
+    private int cantMoveDir = 0; // ï¿½Ñ¹ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´Â°ï¿½ // 1 ï¿½ï¿½ // 2  ï¿½ï¿½ // 3 ï¿½ï¿½ // 4 ï¿½Æ·ï¿½
     private int row;
     private int column;
 
@@ -39,37 +39,46 @@ public class Player : MonoBehaviour
 
     public GameObject enemy;
 
+    public bool playerRolled = false;
+
+    private DiceRoll diceRoll;
     void Start()
     {
+
+        diceRoll = FindObjectOfType<DiceRoll>();
         StartCoroutine(MoveY());
     }
 
     void Update()
     {
         MoveCheck();
-        
-        if(!isMyTurn && !isSkilling)
+
+        if (!isMyTurn && !isSkilling)
         {
             isSkilling = true;
             isCanMove = false;
-            StartCoroutine( UseSkill());
-            //Debug.Log("ÀûÇÑÅ× °ø°ÝÀÌº¥Æ®");
-            //Debug.Log("ÀûÀÌ °ø°ÝÇÏ°í ³ªÇÑÅ× ³¡³µ´Ù°í ÀÌº¥Æ®");
+            StartCoroutine(UseSkill());
+            //Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½Æ®");
+            //Debug.Log("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù°ï¿½ ï¿½Ìºï¿½Æ®");
 
         }
     }
 
     private void MoveCheck()
     {
+        if (DiceManager.Instance.DiceResult <= 0)
+            isCanMove = false;
+        else
+            isCanMove = true;
         if (!isCanMove) return;
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            //º¸½º 3ÀÇ ÀÌµ¿ ºÒ°¡ Ã¼Å©
+            //ï¿½ï¿½ï¿½ï¿½ 3ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ò°ï¿½ Ã¼Å©
             if (isCantMoveDebuf && CantMoveDebuf == 1) return;
 
-            if (cantMoveDir == 4) return; // µÇµ¹¾Æ°¡±â Ã¼Å© (¹Ý´ë¹æÇâÀÇ ¼ýÀÚ)
-            if (CurrentPos.y + 1 > column - 1) return; //¹Ù´Ú Ã¼Å©
+            if (cantMoveDir == 4) return; // ï¿½Çµï¿½ï¿½Æ°ï¿½ï¿½ï¿½ Ã¼Å© (ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+            if (CurrentPos.y + 1 > column - 1) return; //ï¿½Ù´ï¿½ Ã¼Å©
             isCanMove = false;
             cantMoveDir = 1;
             StartCoroutine(MoveXZ(Vector2.up));
@@ -78,8 +87,8 @@ public class Player : MonoBehaviour
         {
             if (isCantMoveDebuf && CantMoveDebuf == 2) return;
 
-            if (cantMoveDir == 3) return; // µÇµ¹¾Æ°¡±â Ã¼Å© (¹Ý´ë¹æÇâÀÇ ¼ýÀÚ)
-            if (CurrentPos.x + -1 < 0) return; // ¹Ù´Ú Ã¼Å©
+            if (cantMoveDir == 3) return; // ï¿½Çµï¿½ï¿½Æ°ï¿½ï¿½ï¿½ Ã¼Å© (ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+            if (CurrentPos.x + -1 < 0) return; // ï¿½Ù´ï¿½ Ã¼Å©
             isCanMove = false;
             cantMoveDir = 2;
             StartCoroutine(MoveXZ(Vector2.left));
@@ -88,8 +97,8 @@ public class Player : MonoBehaviour
         {
             if (isCantMoveDebuf && CantMoveDebuf == 4) return;
 
-            if (cantMoveDir == 2) return; // µÇµ¹¾Æ°¡±â Ã¼Å© (¹Ý´ë¹æÇâÀÇ ¼ýÀÚ)
-            if (CurrentPos.x + 1 > row - 1) return; // ¹Ù´Ú Ã¼Å©
+            if (cantMoveDir == 2) return; // ï¿½Çµï¿½ï¿½Æ°ï¿½ï¿½ï¿½ Ã¼Å© (ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+            if (CurrentPos.x + 1 > row - 1) return; // ï¿½Ù´ï¿½ Ã¼Å©
             isCanMove = false;
             cantMoveDir = 3;
             StartCoroutine(MoveXZ(Vector2.right));
@@ -98,11 +107,15 @@ public class Player : MonoBehaviour
         {
             if (isCantMoveDebuf && CantMoveDebuf == 3) return;
 
-            if (cantMoveDir == 1) return; // µÇµ¹¾Æ°¡±â Ã¼Å© (¹Ý´ë¹æÇâÀÇ ¼ýÀÚ)
-            if (CurrentPos.y + -1 < 0) return; // ¹Ù´Ú Ã¼Å©
+            if (cantMoveDir == 1) return; // ï¿½Çµï¿½ï¿½Æ°ï¿½ï¿½ï¿½ Ã¼Å© (ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+            if (CurrentPos.y + -1 < 0) return; // ï¿½Ù´ï¿½ Ã¼Å©
             isCanMove = false;
             cantMoveDir = 4;
             StartCoroutine(MoveXZ(Vector2.down));
+        }
+        if (playerRolled)
+        {
+
         }
     }
 
@@ -118,7 +131,7 @@ public class Player : MonoBehaviour
                 if (previousFloor != null)
                 {
                     if (previousFloor.isCritical == true)
-                        previousFloor?.SetMaterial(Color.yellow);   
+                        previousFloor?.SetMaterial(Color.yellow);
                     else
                         previousFloor?.SetMaterial(Color.white);
 
@@ -137,10 +150,10 @@ public class Player : MonoBehaviour
                 currentFloor = hit.transform.GetComponent<Floor>();
 
 
-                if(isFinish) { isFinish = false; Changefloors.Add(previousFloor); }
+                if (isFinish) { isFinish = false; Changefloors.Add(previousFloor); }
 
                 if (isSpawn) { isSpawn = false; }
-                else { Skillfloors.Add(currentFloor); } //»ç¿ëÇÏ´Â ½ºÅ³ ¹Ù´Úµé
+                else { Skillfloors.Add(currentFloor); } //ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½Å³ ï¿½Ù´Úµï¿½
 
             }
         }
@@ -148,25 +161,25 @@ public class Player : MonoBehaviour
 
     private IEnumerator UseSkill()
     {
-        previousFloor.SetMaterial(Color.white); //»¡°£»öÀ¸·Î ¹Ù²ï Àü ¹Ù´Ú ¹Ù²ãÁÖ°í
-        for(int i = 0; i < Skillfloors.Count; i++) //¸®½ºÆ®¿¡ ÀÕ´Â ¼ýÀÚ¸¸Å­ ½ºÅ³ »ç¿ë
+        previousFloor.SetMaterial(Color.white); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ ï¿½ï¿½ ï¿½Ù´ï¿½ ï¿½Ù²ï¿½ï¿½Ö°ï¿½
+        for (int i = 0; i < Skillfloors.Count; i++) //ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Õ´ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½Å­ ï¿½ï¿½Å³ ï¿½ï¿½ï¿½
         {
-            if(Skillfloors[i].isCritical == true)
+            if (Skillfloors[i].isCritical == true)
             {
                 Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage *= 2;
             }
 
-            switch(Skillfloors[i].currentSkill)
+            switch (Skillfloors[i].currentSkill)
             {
                 case 0:
-                    Debug.Log("°ø°Ý!");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½!");
                     if (enemy == null)
                     {
                         enemy = GameObject.FindGameObjectWithTag("Enemy");
                     }
                     enemy.GetComponent<Enemy>().CurrentHp -=
                         Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
-                    //¾îÅÃ ÀÌÆåÆ® ÆÄÆ¼Å¬ Ãâ·Â
+                    //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Æ¼Å¬ ï¿½ï¿½ï¿½
                     UIManager.Instance.SetUI();
                     yield return new WaitForSeconds(0.1f);
                     StartCoroutine(ChangeFloorIcon(Changefloors[i]));
@@ -175,7 +188,7 @@ public class Player : MonoBehaviour
                     break;
 
                 case 1:
-                    Debug.Log("°¡µå!");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½!");
                     ShiledGauge += Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
                     UIManager.Instance.SetUI();
                     yield return new WaitForSeconds(0.1f);
@@ -184,12 +197,12 @@ public class Player : MonoBehaviour
                     break;
 
                 case 2:
-                    Debug.Log("Èú!");
-                    if(CurrentHp + Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage > 100)
+                    Debug.Log("ï¿½ï¿½!");
+                    if (CurrentHp + Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage > 100)
                     {
                         CurrentHp = 100;
                     }
-                    else 
+                    else
                     {
                         CurrentHp += Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
                     }
@@ -215,12 +228,12 @@ public class Player : MonoBehaviour
                 Skillfloors[i].isCritical = false;
                 Skillfloors[i].SetMaterial(Color.white);
                 isSetCritical = true;
-            } //ÀÌ°Å ÇÏ°í Ã¼·Â 0µÇ´Â°Å Ã¼Å©ÇØ¾ßÇÔ °³Áß¿äÇÔ Á¦¹ß
+            } //ï¿½Ì°ï¿½ ï¿½Ï°ï¿½ Ã¼ï¿½ï¿½ 0ï¿½Ç´Â°ï¿½ Ã¼Å©ï¿½Ø¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
-        
-       
 
-        if(enemy == null)
+
+
+        if (enemy == null)
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy");
         }
@@ -231,11 +244,10 @@ public class Player : MonoBehaviour
 
     public void MyturnSetting()
     {
-        DiceManager.Instance.GetRandomDiceNum(); // »õ·Î¿î ÁÖ»çÀ§·£´ý°ª ¹Þ¾Æ¿À°í
+        //DiceManager.Instance.GetRandomDiceNum(); // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
+        if (isSetCritical) { isSetCritical = false; FloorManager.Instance.SelectRandomFloor(); } //ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½Ã·Î¾î¸¦ ï¿½ç¼³ï¿½ï¿½ï¿½Ø¾ï¿½ï¿½Ñ´Ù¸ï¿½ ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½
 
-        if(isSetCritical) { isSetCritical = false; FloorManager.Instance.SelectRandomFloor(); } //¸¸¾à Å©¸®Æ¼ÄÃÇÃ·Î¾î¸¦ Àç¼³Á¤ÇØ¾ßÇÑ´Ù¸é ÇÏ¸éµÇÁÒ
-
-        ShiledGauge = 0; //½¯µå°ÔÀÌÁö ÃÊ±âÈ­
+        ShiledGauge = 0; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         UIManager.Instance.SetUI();
 
         Skillfloors.Clear();
@@ -244,39 +256,39 @@ public class Player : MonoBehaviour
         isMyTurn = true;
         isSkilling = false;
         isCanMove = true;
-
+        diceRoll.isRollStart = true;
     }
 
     public IEnumerator ChangeFloorIcon(Floor floor)
     {
         floor.ChangeSkill();
-        //¹Ù²î¾úÀ»¶§ ÀÌÆÑÆ®³ª ÆÄÆ¼Å¬ Ãß°¡ ÇØ¾ßÇÒµí ÀÏ´Ü »ö±òº¯°æÀ¸·Î ÇØµÎ±äÇÔ
+        //ï¿½Ù²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½Æ¼Å¬ ï¿½ß°ï¿½ ï¿½Ø¾ï¿½ï¿½Òµï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½òº¯°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ØµÎ±ï¿½ï¿½ï¿½
         floor.SetMaterial(Color.black);
         yield return new WaitForSeconds(0.15f);
         floor.SetMaterial(Color.white);
     }
 
 
-    private IEnumerator MoveXZ(Vector2 dir) //¾ÕµÚÁÂ¿ì·Î ÀÌµ¿ÇÏ´Â ÄÚ·çÆ¾
+    private IEnumerator MoveXZ(Vector2 dir) //ï¿½Õµï¿½ï¿½Â¿ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï´ï¿½ ï¿½Ú·ï¿½Æ¾
     {
-        for(int i = 0; i < 15; i++)
+        for (int i = 0; i < 15; i++)
         {
             transform.position = new Vector3(transform.position.x + (dir.x * 0.1f), transform.position.y, transform.position.z + (dir.y * 0.1f));
             yield return new WaitForSeconds(0.01f);
         }
 
         CurrentPos += dir;
-        DiceManager.Instance.MinusDice(); //´ÙÀÌ½º°ª ¸¶ÀÌ³Ê½º ÇØÁÜ
-        if(DiceManager.Instance.DiceResult == 0) // 0ÀÌ µÇ¸é ÅÏ Á¾·á
+        DiceManager.Instance.MinusDice(); //ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì³Ê½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        if (DiceManager.Instance.DiceResult == 0) // 0ï¿½ï¿½ ï¿½Ç¸ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             isMyTurn = false;
             isFinish = true;
         }
-        ShootRay(); //¹Ø¿¡ÀÖ´Â °ª °¡Á®¿ÍÁÜ
-        isCanMove = true; //ÀÌµ¿ÀÌ ´Ù ³¡³µÀ¸´Ï ´Ù½Ã ¿òÁ÷¿©µµ µÊ
+        ShootRay(); //ï¿½Ø¿ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        isCanMove = true; //ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     }
 
-    private IEnumerator MoveY() // °øÁß¿¡¼­ ¶³¾îÁö´Â ÄÚ·çÆ¾
+    private IEnumerator MoveY() // ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú·ï¿½Æ¾
     {
         for (int i = 1; i <= 50; i++)
         {
@@ -284,21 +296,21 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
 
-        SettingCurrentPos(); // row¿Í columnÀ» ¼³Á¤ÇØ ÁÙ²¨ÀÓ
-        //´Ù ¶³¾îÁ³À»¶§ ÂøÁö ÀÌÆåÆ® Ãß°¡ÇÏ¸é ±¦ÂúÀ»µí;
+        SettingCurrentPos(); // rowï¿½ï¿½ columnï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß°ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
 
-        isSpawn = true; // Ã³À½ ½ºÆùÇÑ ¹Ù´ÚÀº ¸®½ºÆ®¿¡ ¾Èµé¾î°¡°Ô ÇØÁÖ´Â ºÒº¯¼ö
+        isSpawn = true; // Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Èµï¿½î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Òºï¿½ï¿½ï¿½
 
-        ShootRay(); //Ã³À½ currentfloor¸¦ Ãß°¡ÇØÁà¼­ ¿òÁ÷ÀÌ¸é currentfloor °¡ previousfloor·Î °¡°Ô
-        isCanMove = true; 
+        ShootRay(); //Ã³ï¿½ï¿½ currentfloorï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ï¿½à¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½ currentfloor ï¿½ï¿½ previousfloorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        isCanMove = true;
     }
 
     private void SettingCurrentPos()
     {
-        // row¿Í columnÀ» ¼³Á¤ÇØ ÁÙ²¨ÀÓ ¶ÇÇÑ currentpos·Î º¯°æ
-        ///////////////////////////////////////////////////ÇöÀç ¹ö±× row¿Í column°ªÀÌ Â¦¼öÀÏ °æ¿ì ¿À·ù°¡ ³² °íÃÄ¾ßÇØ
+        // rowï¿½ï¿½ columnï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ currentposï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        ///////////////////////////////////////////////////ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ rowï¿½ï¿½ columnï¿½ï¿½ï¿½ï¿½ Â¦ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½
         row = (int)CurrentPos.x;
         column = (int)CurrentPos.y;
-        CurrentPos = new Vector2(row / 2,  column / 2);
+        CurrentPos = new Vector2(row / 2, column / 2);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f598a8320d3aead4fa9881ea455f3d6c
+guid: af86c423f4a31f5469e7a9dcf4e78aea
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,8 +9,12 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Jolly Lodger
-  fallbackFontReferences: []
+  - Teko
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7432a50a5ce2dff4395cbabc4b488cb2, type: 3}
+  - {fileID: 12800000, guid: e53a0ec3d8b6dcb449382f8d101c6659, type: 3}
+  - {fileID: 12800000, guid: 1cc9a47a7a2425445afed6ec4079bb02, type: 3}
+  - {fileID: 12800000, guid: b1bf17d66953bdd45bcfbdb1ce6b5904, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

@@ -31,10 +31,11 @@ public class DiceRoll : MonoBehaviour
     private bool isRolled = true;
     [SerializeField]
     private bool isStopped = false;
-    private float rollPosition = 9f;
-    private float checkPosition = 0f;
-    private int diceValue = 0;
+    private float rollPosition = 2f;
+    private float checkPosition = 1f;
+    public int diceValue = 0;
     private float rollForce = 1000;
+    public bool isRollStart = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,31 +46,32 @@ public class DiceRoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isRollStart)
         {
+            isRollStart = false;
             RollStart();
         }
 
         if (rigidbody.velocity == Vector3.zero)
         {
-            if (transform.position.y >= checkPosition) { }
+            if (transform.localPosition.y >= checkPosition) { }
             else
             {
+                Debug.Log("다이스 멈췄다");
                 isStopped = true;
             }
         }
 
-        if (isStopped)
+        if (isStopped && isRolled)
         {
-            if (isRolled)
-            {
-                //CheckFixation();
-                CheckSideValue();
-            }
+            //CheckFixation();
+
+            CheckSideValue();
+
         }
     }
 
-    private void RollStart()
+    public void RollStart()
     {
         isRolled = true;
         isStopped = false;
@@ -83,7 +85,7 @@ public class DiceRoll : MonoBehaviour
         {
             diceSide[i].isColling = false;
         }
-        transform.position = new Vector3(rollPosition, 0, 0);
+        transform.localPosition = new Vector3(9, rollPosition, 0);
 
         float rotationX = Random.Range(0, 360);
         float rotationY = Random.Range(0, 360);
@@ -93,7 +95,6 @@ public class DiceRoll : MonoBehaviour
         //transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
         rigidbody.AddForce(-Vector3.right * force);
-
     }
 
     public void CheckFixation()
@@ -117,17 +118,16 @@ public class DiceRoll : MonoBehaviour
 
     public void CheckSideValue()
     {
-        if (isStopped && isRolled)
+        isRolled = false;
+        Debug.Log("");
+        for (int i = 0; i < diceSide.Length; i++)
         {
-            isRolled = false;
-            Debug.Log("Stopped");
-            for (int i = 0; i < diceSide.Length; i++)
+            if (diceSide[i].isColling)
             {
-                if (diceSide[i].isColling)
-                {
-                    diceValue = 7 - diceSide[i].sideValue;
-                    Debug.Log(diceValue);
-                }
+                diceValue = 7 - diceSide[i].sideValue;
+                Debug.Log(diceValue);
+                DiceManager.Instance.DiceResult = diceValue;
+                DiceManager.Instance.SetDiceUI();
             }
         }
     }

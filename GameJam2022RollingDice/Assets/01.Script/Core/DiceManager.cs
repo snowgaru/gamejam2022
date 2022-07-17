@@ -42,12 +42,16 @@ public class DiceManager : MonoBehaviour
     public void MinusDice()
     {
         DiceResult -= 1;
-        UIManager.Instance.CurrentDiceNumText.text = DiceResult.ToString(); // Å×½ºÆ®¿ë text ³ªÁß¿¡ ¹Ù²ã¾ßÇÔ
+        UIManager.Instance.CurrentDiceNumText.text = DiceResult.ToString(); // ï¿½×½ï¿½Æ®ï¿½ï¿½ text ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½
     }
 
-    public void GetRandomDiceNum() // Á¤¹è¾ß ÀÌ°Ç ³Ê°¡ ÁÖ»çÀ§ ¶³¾îÁø°Å ¸ÂÃç¼­ ³ÖÀ¸¸é µÊ
+    public void GetRandomDiceNum() // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì°ï¿½ ï¿½Ê°ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     {
         DiceResult = Random.Range(1, 7);
-        UIManager.Instance.CurrentDiceNumText.text = DiceResult.ToString(); // Å×½ºÆ®¿ë text ³ªÁß¿¡ ¹Ù²ã¾ßÇÔ
+        UIManager.Instance.CurrentDiceNumText.text = DiceResult.ToString(); // ï¿½×½ï¿½Æ®ï¿½ï¿½ text ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½Ù²ï¿½ï¿½ï¿½ï¿½
+    }
+    public void SetDiceUI()
+    {
+        UIManager.Instance.CurrentDiceNumText.text = DiceResult.ToString();
     }
 }
