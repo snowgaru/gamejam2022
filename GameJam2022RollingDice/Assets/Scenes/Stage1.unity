@@ -875,6 +875,8 @@ MonoBehaviour:
   PlayerHpBar: {fileID: 1744296033}
   PlayerGuardBar: {fileID: 1408715767}
   EnemyHpBar: {fileID: 615782124}
+  nextSkillTitle: {fileID: 0}
+  nextSkillExplain: {fileID: 0}
 --- !u!1 &531301032
 GameObject:
   m_ObjectHideFlags: 0

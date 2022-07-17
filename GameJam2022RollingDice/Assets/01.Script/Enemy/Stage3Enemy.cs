@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class Stage3Enemy : Enemy
 {
+    public Sprite up;
+    public Sprite left;
+    public Sprite right;
+    public Sprite down;
+
+    public GameObject spriteArrow;
+    public GameObject spriteArrowPrefab;
+
     public override void Start()
     {
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
+        
         player.GetComponent<Player>().isCantMoveDebuf = false;
         base.Start();
-        random = Random.Range(1, 4);
+        //random = Random.Range(1, 4);
+
+        spriteArrow = Instantiate(spriteArrowPrefab, new Vector3(8,3,-3.5f), Quaternion.Euler(75,0,0));
+        random = Random.Range(2, 3);
     }
     public int debufDamage = 15;
     public override void Attack()
     {
+        spriteArrow.GetComponent<SpriteRenderer>().sprite = null;
         base.Attack();
 
         for (int i = 0; i < 25; i++) //디버프 타일 삭제시키기
@@ -123,6 +136,27 @@ public class Stage3Enemy : Enemy
         //이동 불가는 차례대로 w 1  a  2  s  3  d  4
 
         int dontMoveInt = Random.Range(1, 5);
+
+        if(dontMoveInt == 1)
+        {
+            spriteArrow.GetComponent<SpriteRenderer>().sprite = up;
+            spriteArrow.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else if (dontMoveInt == 2)
+        {
+            spriteArrow.GetComponent<SpriteRenderer>().sprite = left;
+            spriteArrow.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else if (dontMoveInt == 3)
+        {
+            spriteArrow.GetComponent<SpriteRenderer>().sprite = down;
+            spriteArrow.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else if (dontMoveInt == 4)
+        {
+            spriteArrow.GetComponent<SpriteRenderer>().sprite = right;
+            spriteArrow.GetComponent<SpriteRenderer>().color = Color.red;
+        }
 
         player.GetComponent<Player>().isCantMoveDebuf = true;
         player.GetComponent<Player>().CantMoveDebuf = dontMoveInt;
