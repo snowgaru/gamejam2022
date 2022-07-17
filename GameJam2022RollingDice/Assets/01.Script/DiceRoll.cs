@@ -44,6 +44,8 @@ public class DiceRoll : MonoBehaviour
 
     public UnityEvent RollingEndEvent; //이제 적이든 플레이어든 턴을 넘겨야지 isplayerturn을 이용해서 
 
+    public bool isColDontFix = false;
+
     private Player player;
     private Enemy enemy;
 
@@ -66,6 +68,12 @@ public class DiceRoll : MonoBehaviour
         if (rigidbody.velocity == Vector3.zero)
         {
             if (transform.localPosition.y >= checkPosition) { }
+            else if (isColDontFix && CheckFixation())
+            {
+                float fixationForce = Random.Range(rollForce * 0.3f, rollForce * 0.8f);
+                rigidbody.AddForce(-Vector3.right * fixationForce);
+                Debug.Log("Fixation Reroll");
+            }
             else
             {
                 Debug.Log("다이스 멈췄다");
@@ -84,10 +92,10 @@ public class DiceRoll : MonoBehaviour
 
     public void StartTurn()
     {
-        if(isPlayerTurn)
+        if (isPlayerTurn)
         {
             isPlayerTurn = false;
-            if(player == null)
+            if (player == null)
             {
                 player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
             }
@@ -106,6 +114,7 @@ public class DiceRoll : MonoBehaviour
 
     public void RollStart()
     {
+        Debug.Log("Rol!!");
         isRolled = true;
         isStopped = false;
 
@@ -124,13 +133,13 @@ public class DiceRoll : MonoBehaviour
         float rotationY = Random.Range(0, 360);
         float rotationZ = Random.Range(0, 360);
 
-        float force = Random.Range(rollForce * 0.9f, rollForce * 1.1f);
+        float force = Random.Range(rollForce * 0.8f, rollForce * 1.2f);
         //transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.rotation = Quaternion.Euler(rotationX, rotationY, rotationZ);
         rigidbody.AddForce(-Vector3.right * force);
     }
 
-    public void CheckFixation()
+    public bool CheckFixation()
     {
         bool fixation = true;
         for (int i = 0; i < diceSide.Length; i++)
@@ -141,12 +150,8 @@ public class DiceRoll : MonoBehaviour
                 break;
             }
         }
-        if (fixation)
-        {
-            float fixationForce = Random.Range(rollForce * 0.3f, rollForce * 0.8f);
-            rigidbody.AddForce(-Vector3.right * fixationForce);
-            Debug.Log("Fixation Reroll");
-        }
+        return fixation;
+
     }
 
     public void CheckSideValue()
@@ -173,6 +178,21 @@ public class DiceRoll : MonoBehaviour
         for (int i = 0; i < wall.Length; i++)
         {
             wall[i].collider.isTrigger = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("DontFixation"))
+        {
+            isColDontFix = true;
+        }
+    }
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("DontFixation"))
+        {
+            isColDontFix = false;
         }
     }
 }

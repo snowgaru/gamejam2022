@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4366757, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -719,6 +719,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 4655029692239033987, guid: c4595e2deafd2cc4799a9f5cb11344d7, type: 3}
   FloorParent: {fileID: 1286099}
+  Player: {fileID: 0}
+  Enemy: {fileID: 0}
+  row: 5
+  column: 5
 --- !u!4 &412362448
 Transform:
   m_ObjectHideFlags: 0
@@ -764,6 +768,8 @@ MonoBehaviour:
   CurrentDiceNumText: {fileID: 1472187521}
   player: {fileID: 0}
   enemy: {fileID: 0}
+  RestartPanel: {fileID: 893598451}
+  NextScenePanel: {fileID: 1009901726}
 --- !u!1 &531301032
 GameObject:
   m_ObjectHideFlags: 0
