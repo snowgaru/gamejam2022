@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
@@ -21,10 +22,16 @@ public class Enemy : MonoBehaviour
 
     protected int random;
 
+    [SerializeField]
+    protected Text nextSkillTitle;
+
+    [SerializeField]
+    protected Text nextSkillExplain;
+
     public void Update()
     {
         //test
-        if(Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             CurrentHp = 1;
         }
@@ -56,7 +63,7 @@ public class Enemy : MonoBehaviour
 
     public void PlayerHPCheck()
     {
-        if(player.GetComponent<Player>().CurrentHp <= 0)
+        if (player.GetComponent<Player>().CurrentHp <= 0)
         {
             UIManager.Instance.RestartPanelOn();
         }

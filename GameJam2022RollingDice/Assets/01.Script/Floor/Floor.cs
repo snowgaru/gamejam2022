@@ -11,23 +11,23 @@ public class Floor : MonoBehaviour
 
     public int random;
 
-    public bool isChange; //º¯°æµÇ¾ßÇÏ´Â ¹Ù´ÚÀÎ°¡?
-    public bool isFinish; //¸Ç ¸¶Áö¸· µµÂøÇÑ ¹Ù´ÚÀÎ°¡?
-    public bool isCritical; //Å©¸®Æ¼ÄÃÀÌ µÇ´Â ¹Ù´ÚÀÎ°¡?
+    public bool isChange; //ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ï´ï¿½ ï¿½Ù´ï¿½ï¿½Î°ï¿½?
+    public bool isFinish; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ï¿½Î°ï¿½?
+    public bool isCritical; //Å©ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½Ù´ï¿½ï¿½Î°ï¿½?
 
-    public bool isDebuf; //3¹øÂ° º¸½ºÀÇ µð¹öÇÁ ¹Ù´ÚÀÎ°¡?
+    public bool isDebuf; //3ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù´ï¿½ï¿½Î°ï¿½?
 
     void Start()
     {
         spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
 
-        ChangeSkill(); //·£´ý½ºÅ³ ¹× ¾ÆÀÌÄÜ ¼¼ÆÃ
+        ChangeSkill(); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-        StartCoroutine(MoveY()); //¿ÀºêÁ§Æ® yÃà ¶³¾îÆ®¸®±â;
+        StartCoroutine(MoveY()); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® yï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½;
     }
 
 
-    public void ChangeSkill() //·£´ý½ºÅ³ ¹× ¾ÆÀÌÄÜ ¼¼ÆÃ
+    public void ChangeSkill() //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
 
         GetRandom();
@@ -43,13 +43,13 @@ public class Floor : MonoBehaviour
 
     private IEnumerator MoveY()
     {
-        for(int i = 1; i <= 20; i++)
+        for (int i = 1; i <= 20; i++)
         {
             transform.position = new Vector3(transform.position.x, 9 - (0.4f * i), transform.position.z);
             yield return new WaitForSeconds(0.005f);
         }
 
-        //´Ù ¶³¾îÁ³À»¶§ ÂøÁö ÀÌÆåÆ® Ãß°¡ÇÏ¸é ±¦ÂúÀ»µí;
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ß°ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;
     }
 
     private void SetSkill()
@@ -64,7 +64,7 @@ public class Floor : MonoBehaviour
 
     public int GetRandomSkill()
     {
-        int random = Random.Range(0, System.Enum.GetValues(typeof(SkillEnum)).Length); // 0ºÎÅÍ ½ºÅ³enumÀÇ °¹¼ö±îÁö ·£´ýÀ» ±¸ÇÔW
+        int random = Random.Range(0, System.Enum.GetValues(typeof(SkillEnum)).Length); // 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å³enumï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½W
         return random;
     }
 
@@ -81,8 +81,8 @@ public class Floor : MonoBehaviour
 
     public void DeleteDebuf()
     {
-        SetMaterial(Color.white);
+        SetMaterial(Color.black);
         isDebuf = false;
     }
-    
+
 }

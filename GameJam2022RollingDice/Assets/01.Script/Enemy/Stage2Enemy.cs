@@ -18,18 +18,22 @@ public class Stage2Enemy : Enemy
     {
         base.Attack();
 
-        
+
         // 0 : ���尡 ������� ���������� ������� ���������� 
         // 1 : ���尡 ������� ���������� ������� ����������
 
         switch (random)
         {
             case 0:
+                nextSkillTitle.text = "Shield Break Attack";
+                nextSkillExplain.text = "(Deals 18 damage when the guard gauge is present, and 10 damage when it doesn't.) X Dice Eyes";
                 Debug.Log("ù��° ��ų ���");
                 StartCoroutine(Skill0AttackCor());
                 break;
 
             case 1:
+                nextSkillTitle.text = "Heart Break Attack";
+                nextSkillExplain.text = "(Deals 18 damage when the guard gauge is not present, and 10 damage when it does.) X Dice Eyes";
                 Debug.Log("�ι�° ��ų ���");
                 StartCoroutine(Skill1AttackCor());
                 break;

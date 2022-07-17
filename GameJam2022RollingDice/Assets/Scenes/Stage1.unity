@@ -2392,7 +2392,7 @@ RectTransform:
   m_LocalScale: {x: 0.9998999, y: 0.9999, z: 0.9999}
   m_Children: []
   m_Father: {fileID: 1596079386}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3031,16 +3031,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419067167}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -72.00003}
-  m_LocalScale: {x: 0.9998999, y: 0.9999, z: 0.9999}
+  m_LocalPosition: {x: 0, y: 0, z: -72}
+  m_LocalScale: {x: 0.9998999, y: 0.99990004, z: 0.99990004}
   m_Children: []
-  m_Father: {fileID: 1596079386}
-  m_RootOrder: 3
+  m_Father: {fileID: 1722753226}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 451.59998, y: -207.85008}
-  m_SizeDelta: {x: 1000, y: 228.5}
+  m_AnchoredPosition: {x: 2.4000854, y: -33.999985}
+  m_SizeDelta: {x: 729.8, y: 228.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1419067169
 MonoBehaviour:
@@ -3084,12 +3084,12 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 2
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 0.7
   m_Text: "\rInflicts Dice Eyes x 10 damage to the player."
 --- !u!222 &1419067171
 CanvasRenderer:
@@ -3603,7 +3603,6 @@ RectTransform:
   - {fileID: 1524916265}
   - {fileID: 680315338}
   - {fileID: 1722753226}
-  - {fileID: 1419067168}
   - {fileID: 1830486316}
   - {fileID: 1124299501}
   m_Father: {fileID: 1378624281}
@@ -3881,7 +3880,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.000025749207}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1419067168}
   m_Father: {fileID: 1596079386}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4112,7 +4112,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1596079386}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}

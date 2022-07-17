@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             cantMoveDir = 1;
             StartCoroutine(MoveXZ(Vector2.up));
         }
-        if (Input.GetKeyDown(KeyCode.A) &&!Input.GetKeyDown(KeyCode.W)
+        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.W)
             && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
         {
             if (isCantMoveDebuf && CantMoveDebuf == 2) return;
@@ -143,18 +143,18 @@ public class Player : MonoBehaviour
                     if (previousFloor.isCritical == true)
                         previousFloor?.SetMaterial(Color.yellow);
                     else
-                        previousFloor?.SetMaterial(Color.white);
+                        previousFloor?.SetMaterial(Color.black);
 
                     if (previousFloor.isDebuf == true)
                         previousFloor?.SetMaterial(Color.magenta);
                     else
-                        previousFloor?.SetMaterial(Color.white);
+                        previousFloor?.SetMaterial(Color.black);
                 }
                 previousFloor = currentFloor;
                 previousFloor?.SetMaterial(Color.red);
 
 
-                
+
 
 
                 currentFloor = hit.transform.GetComponent<Floor>();
@@ -176,14 +176,14 @@ public class Player : MonoBehaviour
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy");
         }
-        previousFloor.SetMaterial(Color.white); //���������� �ٲ� �� �ٴ� �ٲ��ְ�
+        previousFloor.SetMaterial(Color.black); //���������� �ٲ� �� �ٴ� �ٲ��ְ�
         for (int i = 0; i < Skillfloors.Count; i++) //����Ʈ�� �մ� ���ڸ�ŭ ��ų ���
         {
             if (Skillfloors[i].isCritical == true)
             {
                 skillDamage = Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage * 2;
             }
-            else 
+            else
             {
                 skillDamage = Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
             }
@@ -241,16 +241,16 @@ public class Player : MonoBehaviour
             {
                 //Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage /= 2;
                 Skillfloors[i].isCritical = false;
-                Skillfloors[i].SetMaterial(Color.white);
+                Skillfloors[i].SetMaterial(Color.black);
                 isSetCritical = true;
             } //�̰� �ϰ� ü�� 0�Ǵ°� üũ�ؾ��� ���߿��� ����
 
-            if(enemy.GetComponent<Enemy>().CurrentHp <= 0)
+            if (enemy.GetComponent<Enemy>().CurrentHp <= 0)
             {
                 UIManager.Instance.NextScenePanelOn();
-            }    
-            
-            if(CurrentHp <= 0)
+            }
+
+            if (CurrentHp <= 0)
             {
                 UIManager.Instance.RestartPanelOn();
             }
@@ -290,7 +290,7 @@ public class Player : MonoBehaviour
         //�ٲ������ ����Ʈ�� ��ƼŬ �߰� �ؾ��ҵ� �ϴ� ���򺯰����� �صα���
         floor.SetMaterial(Color.black);
         yield return new WaitForSeconds(0.15f);
-        floor.SetMaterial(Color.white);
+        floor.SetMaterial(Color.black);
     }
 
 
