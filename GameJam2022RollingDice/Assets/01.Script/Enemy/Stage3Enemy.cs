@@ -130,9 +130,10 @@ public class Stage3Enemy : Enemy
         Debug.Log(dontMoveInt);
 
         int count = DiceManager.Instance.DiceResult;
-        CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
+
         for (int i = 0; i < count; i++)
         {
+            CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
             DiceManager.Instance.MinusDice();
             if (player.GetComponent<Player>().ShiledGauge >= (atk - 2))
             {
@@ -180,9 +181,9 @@ public class Stage3Enemy : Enemy
         }
 
         int count = DiceManager.Instance.DiceResult;
-        CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
         for (int i = 0; i < count; i++)
         {
+            CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
             DiceManager.Instance.MinusDice();
             if (player.GetComponent<Player>().ShiledGauge >= atk)
             {
@@ -198,7 +199,7 @@ public class Stage3Enemy : Enemy
                 }
                 else
                 {
-                    CurrentHp += (atk);
+                    CurrentHp += (atk / 2);
                 }
             }
             else if (player.GetComponent<Player>().ShiledGauge < atk)
