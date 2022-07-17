@@ -17,8 +17,20 @@ public class Enemy : MonoBehaviour
 
     public GameObject player;
 
+    protected DiceRoll diceRoll;
+
+    public void Update()
+    {
+        //test
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            CurrentHp = 1;
+        }
+    }
+
     public virtual void Start()
     {
+        diceRoll = FindObjectOfType<DiceRoll>();
         StartCoroutine(MoveY());
     }
 
@@ -36,9 +48,16 @@ public class Enemy : MonoBehaviour
     {
         //DiceManager.Instance.GetRandomDiceNum();
         //Debug.Log("Attack");
-        DiceRoll diceRoll = FindObjectOfType<DiceRoll>();
-        diceRoll.RollStart();
+        //DiceRoll diceRoll = FindObjectOfType<DiceRoll>();
+        //diceRoll.RollStart();
     }
 
+    public void PlayerHPCheck()
+    {
+        if(player.GetComponent<Player>().CurrentHp <= 0)
+        {
+            UIManager.Instance.RestartPanelOn();
+        }
+    }
 
 }

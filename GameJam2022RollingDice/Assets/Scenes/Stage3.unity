@@ -719,6 +719,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Floor: {fileID: 4655029692239033987, guid: c4595e2deafd2cc4799a9f5cb11344d7, type: 3}
   FloorParent: {fileID: 1286099}
+  Player: {fileID: 8884666969389555153, guid: 32afbbf97a1cbd84b955c1c17e0f055f, type: 3}
+  Enemy: {fileID: 1408512826098269959, guid: 8cd9c2c5f4f970e458cd9c8c29dcd09c, type: 3}
+  row: 5
+  column: 5
 --- !u!4 &412362448
 Transform:
   m_ObjectHideFlags: 0
@@ -764,6 +768,8 @@ MonoBehaviour:
   CurrentDiceNumText: {fileID: 1472187521}
   player: {fileID: 0}
   enemy: {fileID: 0}
+  RestartPanel: {fileID: 893598451}
+  NextScenePanel: {fileID: 1009901726}
 --- !u!1 &531301032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1604,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &893598452
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1740,7 +1746,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 928601224}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412362450}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SceneStage3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &928601224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1879,7 +1897,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1009901727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2948,7 +2966,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1855147517
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3012,7 +3030,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1855147519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412362450}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SceneStage2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1855147519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3414,7 +3444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 302.01}
+  m_AnchoredPosition: {x: 0, y: -40}
   m_SizeDelta: {x: 1059.75, y: 319.38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2046041831
@@ -3444,13 +3474,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 277
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You Win!!
+  m_Text: Clear
 --- !u!222 &2046041832
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -68,9 +68,9 @@ public class Stage2Enemy : Enemy
             UIManager.Instance.SetUI();
 
             yield return new WaitForSeconds(1f);
-
+            PlayerHPCheck();
         }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
     }
 
 
@@ -107,8 +107,8 @@ public class Stage2Enemy : Enemy
             UIManager.Instance.SetUI();
 
             yield return new WaitForSeconds(1f);
-
+            PlayerHPCheck();
         }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
     }
 }

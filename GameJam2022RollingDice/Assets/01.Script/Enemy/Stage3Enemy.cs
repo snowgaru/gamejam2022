@@ -109,7 +109,7 @@ public class Stage3Enemy : Enemy
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
     }
 
     private IEnumerator Skill2AttackCor()
@@ -164,9 +164,9 @@ public class Stage3Enemy : Enemy
             }
             UIManager.Instance.SetUI();
             yield return new WaitForSeconds(1f);
-
+            PlayerHPCheck();
         }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
     }
 
     private IEnumerator Skill3AttackCor()
@@ -214,9 +214,9 @@ public class Stage3Enemy : Enemy
             }
             UIManager.Instance.SetUI();
             yield return new WaitForSeconds(1f);
-
+            PlayerHPCheck();
         }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
     }
 
     public void ShuffleList<T>(List<T> list)

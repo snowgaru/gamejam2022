@@ -44,13 +44,19 @@ public class Player : MonoBehaviour
     private DiceRoll diceRoll;
     void Start()
     {
-
         diceRoll = FindObjectOfType<DiceRoll>();
         StartCoroutine(MoveY());
     }
 
     void Update()
     {
+
+        //test
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            CurrentHp = 1;
+        }
+
         MoveCheck();
 
         if (!isMyTurn && !isSkilling)
@@ -66,10 +72,10 @@ public class Player : MonoBehaviour
 
     private void MoveCheck()
     {
-        if (DiceManager.Instance.DiceResult <= 0)
-            isCanMove = false;
-        else
-            isCanMove = true;
+        //if (DiceManager.Instance.DiceResult <= 0)
+        //    isCanMove = false;
+        //else
+        //    isCanMove = true;
         if (!isCanMove) return;
 
         if (Input.GetKeyDown(KeyCode.W))
@@ -161,6 +167,10 @@ public class Player : MonoBehaviour
 
     private IEnumerator UseSkill()
     {
+        if (enemy == null)
+        {
+            enemy = GameObject.FindGameObjectWithTag("Enemy");
+        }
         previousFloor.SetMaterial(Color.white); //���������� �ٲ� �� �ٴ� �ٲ��ְ�
         for (int i = 0; i < Skillfloors.Count; i++) //����Ʈ�� �մ� ���ڸ�ŭ ��ų ���
         {
@@ -173,10 +183,6 @@ public class Player : MonoBehaviour
             {
                 case 0:
                     Debug.Log("����!");
-                    if (enemy == null)
-                    {
-                        enemy = GameObject.FindGameObjectWithTag("Enemy");
-                    }
                     enemy.GetComponent<Enemy>().CurrentHp -=
                         Skillfloors[i].skillList[Skillfloors[i].currentSkill].damage;
                     //���� ����Ʈ ��ƼŬ ���
@@ -229,6 +235,16 @@ public class Player : MonoBehaviour
                 Skillfloors[i].SetMaterial(Color.white);
                 isSetCritical = true;
             } //�̰� �ϰ� ü�� 0�Ǵ°� üũ�ؾ��� ���߿��� ����
+
+            if(enemy.GetComponent<Enemy>().CurrentHp <= 0)
+            {
+                UIManager.Instance.NextScenePanelOn();
+            }    
+            
+            if(CurrentHp <= 0)
+            {
+                UIManager.Instance.RestartPanelOn();
+            }
         }
 
 
@@ -237,8 +253,8 @@ public class Player : MonoBehaviour
         {
             enemy = GameObject.FindGameObjectWithTag("Enemy");
         }
-        enemy.GetComponent<Enemy>().AttackStartEvent?.Invoke();
-
+        //enemy.GetComponent<Enemy>().AttackStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
         //MyturnSetting();
     }
 
@@ -302,7 +318,8 @@ public class Player : MonoBehaviour
         isSpawn = true; // ó�� ������ �ٴ��� ����Ʈ�� �ȵ��� ���ִ� �Һ���
 
         ShootRay(); //ó�� currentfloor�� �߰����༭ �����̸� currentfloor �� previousfloor�� ����
-        isCanMove = true;
+        diceRoll.RollingDiceEvent?.Invoke();
+        //isCanMove = true;
     }
 
     private void SettingCurrentPos()

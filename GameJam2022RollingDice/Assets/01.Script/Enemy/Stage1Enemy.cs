@@ -39,7 +39,9 @@ public class Stage1Enemy : Enemy
             UIManager.Instance.SetUI();
             yield return new WaitForSeconds(1f);
 
+            PlayerHPCheck();
         }
-        player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
+        diceRoll.RollingDiceEvent?.Invoke();
+        //player.GetComponent<Player>().MyTurnStartEvent?.Invoke();
     }
 }

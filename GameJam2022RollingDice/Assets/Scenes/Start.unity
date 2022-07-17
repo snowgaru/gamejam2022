@@ -349,18 +349,20 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 245
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 245
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: 'Start
+
+'
 --- !u!222 &386049195
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -614,16 +616,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e75b63610df494dad447b8516797fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 8884666969389555153, guid: 32afbbf97a1cbd84b955c1c17e0f055f, type: 3}
-  Enemy1: {fileID: 2586090439934565933, guid: b104f9a66387a6b4cbe0866871845c75, type: 3}
-  Enemy2: {fileID: 3879711770058172849, guid: 9c084b1c495e563489be6d59dc760aff, type: 3}
-  Enemy3: {fileID: 1408512826098269959, guid: 8cd9c2c5f4f970e458cd9c8c29dcd09c, type: 3}
-  currentStage: 1
-  row: 5
-  column: 5
-  NextPanel: {fileID: 0}
-  RestartPanel: {fileID: 3542927531668316570}
-  EndPanel: {fileID: 0}
 --- !u!4 &2123898935
 Transform:
   m_ObjectHideFlags: 0
@@ -763,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8934245421457151858, guid: 836b7226f7131014c97b27facb34a2a3, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836b7226f7131014c97b27facb34a2a3, type: 3}

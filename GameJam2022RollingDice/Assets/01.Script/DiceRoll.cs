@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 using Random = UnityEngine.Random;
 
@@ -36,6 +37,16 @@ public class DiceRoll : MonoBehaviour
     public int diceValue = 0;
     private float rollForce = 1000;
     public bool isRollStart = true;
+
+    public bool isPlayerTurn = true;
+
+    public UnityEvent RollingDiceEvent;
+
+    public UnityEvent RollingEndEvent; //이제 적이든 플레이어든 턴을 넘겨야지 isplayerturn을 이용해서 
+
+    private Player player;
+    private Enemy enemy;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +60,7 @@ public class DiceRoll : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isRollStart)
         {
             isRollStart = false;
-            RollStart();
+            //RollStart();
         }
 
         if (rigidbody.velocity == Vector3.zero)
@@ -68,6 +79,28 @@ public class DiceRoll : MonoBehaviour
 
             CheckSideValue();
 
+        }
+    }
+
+    public void StartTurn()
+    {
+        if(isPlayerTurn)
+        {
+            isPlayerTurn = false;
+            if(player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            }
+            player.MyTurnStartEvent?.Invoke();
+        }
+        else
+        {
+            isPlayerTurn = true;
+            if (enemy == null)
+            {
+                enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
+            }
+            enemy.AttackStartEvent?.Invoke();
         }
     }
 
@@ -128,8 +161,11 @@ public class DiceRoll : MonoBehaviour
                 Debug.Log(diceValue);
                 DiceManager.Instance.DiceResult = diceValue;
                 DiceManager.Instance.SetDiceUI();
+                RollingEndEvent?.Invoke();
             }
         }
+
+        //if myturn 
     }
 
     public void WallClose()
