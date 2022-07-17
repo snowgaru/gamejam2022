@@ -47,7 +47,8 @@ public class DiceRoll : MonoBehaviour
     public bool isColDontFix = false;
 
     private Player player;
-    private Enemy enemy; public AudioClip[] clips; // 0 총쏘기  1 히트  2 재장전  3 뒤질때
+    private Enemy enemy;
+    public AudioClip[] clips; // 0 총쏘기  1 히트  2 재장전  3 뒤질때
     public AudioSource audioSource;
     public void PlayEffect(int num)
     {

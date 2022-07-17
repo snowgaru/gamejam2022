@@ -977,6 +977,7 @@ MonoBehaviour:
   EnemyHpBar: {fileID: 615782124}
   nextSkillTitle: {fileID: 0}
   nextSkillExplain: {fileID: 0}
+  nowTurn: {fileID: 0}
 --- !u!1 &531301032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,7 +2416,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2cebe5ef59f447d4d803665e3ecf1a2f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9669960e415ea604d81fb0784634df79, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2974,8 +2975,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
-  fixForce: 300
-  vel: {x: 1, y: 0, z: 0}
 --- !u!65 &1277365599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3727,8 +3726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
-  fixForce: 300
-  vel: {x: 0, y: 0, z: 1}
 --- !u!65 &1572806534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4876,8 +4873,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
-  fixForce: 300
-  vel: {x: 0, y: 0, z: -1}
 --- !u!65 &2002514507
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5175,8 +5170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
-  fixForce: 300
-  vel: {x: 1, y: 0, z: 0}
 --- !u!65 &2080316266
 BoxCollider:
   m_ObjectHideFlags: 0

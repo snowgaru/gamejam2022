@@ -5,8 +5,8 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public Collider collider;
-    public float fixForce = 10;
-    public Vector3 vel;
+    private float fixForce = 25;
+    private Vector3 vel;
     // Start is called before the first frame update
     void Start()
     {

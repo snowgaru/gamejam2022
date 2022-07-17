@@ -49,8 +49,18 @@ public class Player : MonoBehaviour
     public GameObject AttackEffect;
     public GameObject GuardEffect;
 
+    public AudioClip[] clips; // 0 총쏘기  1 히트  2 재장전  3 뒤질때
+    public AudioSource audioSource;
+    public void PlayEffect(int num)
+    {
+        audioSource.clip = clips[num];
+        audioSource.PlayOneShot(clips[num]);
+    }
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0.5f;
         diceRoll = FindObjectOfType<DiceRoll>();
         StartCoroutine(MoveY());
     }
@@ -221,7 +231,7 @@ public class Player : MonoBehaviour
                     yield return new WaitForSeconds(0.1f);
                     CameraManager.Instance.ShakeVoid(0.1f, 0.35f);
                     yield return new WaitForSeconds(0.4f);
-  
+
                     yield return new WaitForSeconds(0.2f);
 
                     break;
@@ -321,14 +331,17 @@ public class Player : MonoBehaviour
         {
             case 0:
                 Instantiate(AttackEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                PlayEffect(0);
                 break;
 
             case 1:
                 Instantiate(GuardEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                PlayEffect(1);
                 break;
 
             case 2:
                 Instantiate(HealEffect, new Vector3(floor.transform.position.x, 1.6f, floor.transform.position.z), Quaternion.identity);
+                PlayEffect(2);
                 break;
 
             default:
@@ -340,7 +353,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         floor.ChangeSkill();
         floor.SetMaterial(Color.white);
-        
+
     }
 
 

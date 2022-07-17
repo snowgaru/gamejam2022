@@ -57,6 +57,8 @@ public class UIManager : MonoBehaviour
 
     public Text nextSkillTitle;
     public Text nextSkillExplain;
+
+    public Text nowTurn;
     public void GetPlayerAndEnemy()
     {
         enemy = GameObject.FindGameObjectWithTag("Enemy");
