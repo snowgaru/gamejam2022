@@ -92,6 +92,12 @@ public class DiceRoll : MonoBehaviour
 
     public void StartTurn()
     {
+        StartCoroutine(StartTurnCor());
+    }
+
+    public IEnumerator StartTurnCor()
+    {
+        yield return new WaitForSeconds(1f);
         if (isPlayerTurn)
         {
             isPlayerTurn = false;
