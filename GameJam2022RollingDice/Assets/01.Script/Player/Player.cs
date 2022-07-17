@@ -115,13 +115,14 @@ public class Player : MonoBehaviour
             && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
         {
             //���� 3�� �̵� �Ұ� üũ
-            if (isCantMoveDebuf && CantMoveDebuf == 1) return;
-
-            if (cantMoveDir == 4)
+            if (isCantMoveDebuf && CantMoveDebuf == 1)
             {
                 CurrentHp -= 20;
                 CameraManager.Instance.ShakeVoid(0.1f, 0.25f);
-            }
+                UIManager.Instance.SetUI();
+            };
+
+            if (cantMoveDir == 4) return;
 
             //return; // �ǵ��ư��� üũ (�ݴ������ ����)
             if (CurrentPos.y + 1 > column - 1) return; //�ٴ� üũ
@@ -132,7 +133,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.W)
             && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.D))
         {
-            if (isCantMoveDebuf && CantMoveDebuf == 2) return;
+            if (isCantMoveDebuf && CantMoveDebuf == 2)
+            {
+                CurrentHp -= 20;
+                CameraManager.Instance.ShakeVoid(0.1f, 0.25f);
+                UIManager.Instance.SetUI();
+            };
 
             if (cantMoveDir == 3) return; // �ǵ��ư��� üũ (�ݴ������ ����)
             if (CurrentPos.x + -1 < 0) return; // �ٴ� üũ
@@ -143,7 +149,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) && !Input.GetKeyDown(KeyCode.W)
             && !Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.A))
         {
-            if (isCantMoveDebuf && CantMoveDebuf == 4) return;
+            if (isCantMoveDebuf && CantMoveDebuf == 4)
+            {
+                CurrentHp -= 20;
+                CameraManager.Instance.ShakeVoid(0.1f, 0.25f);
+                UIManager.Instance.SetUI();
+            };
 
             if (cantMoveDir == 2) return; // �ǵ��ư��� üũ (�ݴ������ ����)
             if (CurrentPos.x + 1 > row - 1) return; // �ٴ� üũ
@@ -154,7 +165,12 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S) && !Input.GetKeyDown(KeyCode.W)
             && !Input.GetKeyDown(KeyCode.A) && !Input.GetKeyDown(KeyCode.D))
         {
-            if (isCantMoveDebuf && CantMoveDebuf == 3) return;
+            if (isCantMoveDebuf && CantMoveDebuf == 3)
+            {
+                CurrentHp -= 20;
+                CameraManager.Instance.ShakeVoid(0.1f, 0.25f);
+                UIManager.Instance.SetUI();
+            };
 
             if (cantMoveDir == 1) return; // �ǵ��ư��� üũ (�ݴ������ ����)
             if (CurrentPos.y + -1 < 0) return; // �ٴ� üũ

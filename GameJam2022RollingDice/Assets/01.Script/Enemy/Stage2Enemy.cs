@@ -8,6 +8,7 @@ public class Stage2Enemy : Enemy
     private float Strong = 1.8f; // 15��
     private float Weak = 1f; // 7
 
+  
     public override void Start()
     {
         base.Start();
