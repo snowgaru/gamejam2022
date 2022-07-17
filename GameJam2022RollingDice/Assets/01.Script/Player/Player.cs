@@ -41,6 +41,8 @@ public class Player : MonoBehaviour
 
     public bool playerRolled = false;
 
+    public float TempNumHp;
+    public float TempNumGd;
     private DiceRoll diceRoll;
 
     public GameObject HealEffect;
@@ -55,7 +57,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-
+        if (CurrentHp > MaxHp)
+        {
+            CurrentHp = MaxHp;
+        }
+        Vector3 barVec = UIManager.Instance.PlayerHpBar.transform.localScale;
+        float hp = CurrentHp;
+        float fullhp = MaxHp;
+        //TempNumHp = CurrentHp / fullhp;
+        UIManager.Instance.PlayerHpBar.transform.localScale = new Vector3(hp / fullhp, barVec.y, barVec.z);
+        barVec = UIManager.Instance.PlayerGuardBar.transform.localScale;
+        TempNumGd = ShiledGauge;
+        UIManager.Instance.PlayerGuardBar.transform.localScale = new Vector3(TempNumGd / 100, barVec.y, barVec.z);
         //test
         if (Input.GetKeyDown(KeyCode.L))
         {
