@@ -871,6 +871,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   RestartPanel: {fileID: 893598451}
   NextScenePanel: {fileID: 1009901726}
+  PlayerHpBar: {fileID: 0}
 --- !u!1 &531301032
 GameObject:
   m_ObjectHideFlags: 0
@@ -4523,7 +4524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1965131808
 RectTransform:
   m_ObjectHideFlags: 0
