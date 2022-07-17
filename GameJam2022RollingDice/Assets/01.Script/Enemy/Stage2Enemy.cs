@@ -8,11 +8,17 @@ public class Stage2Enemy : Enemy
     private float Strong = 1.8f; // 15��
     private float Weak = 1f; // 7
 
+    public override void Start()
+    {
+        base.Start();
+        int random = Random.Range(0, 2);
+    }
+
     public override void Attack()
     {
         base.Attack();
 
-        int random = Random.Range(0, 2);
+        
         // 0 : ���尡 ������� ���������� ������� ���������� 
         // 1 : ���尡 ������� ���������� ������� ����������
 
@@ -70,6 +76,7 @@ public class Stage2Enemy : Enemy
             yield return new WaitForSeconds(1f);
             PlayerHPCheck();
         }
+        random = Random.Range(0, 2);
         diceRoll.RollingDiceEvent?.Invoke();
     }
 
@@ -109,6 +116,7 @@ public class Stage2Enemy : Enemy
             yield return new WaitForSeconds(1f);
             PlayerHPCheck();
         }
+        random = Random.Range(0, 2);
         diceRoll.RollingDiceEvent?.Invoke();
     }
 }

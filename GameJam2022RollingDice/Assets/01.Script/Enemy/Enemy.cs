@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     protected DiceRoll diceRoll;
 
+    protected int random;
+
     public void Update()
     {
         //test

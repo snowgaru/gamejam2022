@@ -12,6 +12,7 @@ public class Stage3Enemy : Enemy
         }
         player.GetComponent<Player>().isCantMoveDebuf = false;
         base.Start();
+        random = Random.Range(1, 4);
     }
     public int debufDamage = 15;
     public override void Attack()
@@ -23,7 +24,7 @@ public class Stage3Enemy : Enemy
             FloorManager.Instance.floors[i].DeleteDebuf();
         }
 
-        int random = Random.Range(1, 4); 
+        
         switch(random)
         {
             case 1:
@@ -44,7 +45,7 @@ public class Stage3Enemy : Enemy
             default:
                 break;
         }
-
+        
         //StartCoroutine(AttackCor());
     }
 
@@ -108,7 +109,7 @@ public class Stage3Enemy : Enemy
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
+        random = Random.Range(1, 4);
         diceRoll.RollingDiceEvent?.Invoke();
     }
 
@@ -166,6 +167,7 @@ public class Stage3Enemy : Enemy
             yield return new WaitForSeconds(1f);
             PlayerHPCheck();
         }
+        random = Random.Range(1, 4);
         diceRoll.RollingDiceEvent?.Invoke();
     }
 
@@ -216,6 +218,7 @@ public class Stage3Enemy : Enemy
             yield return new WaitForSeconds(1f);
             PlayerHPCheck();
         }
+        random = Random.Range(1, 4);
         diceRoll.RollingDiceEvent?.Invoke();
     }
 

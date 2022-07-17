@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Stage1Enemy : Enemy
 {
+    public override void Start()
+    {
+        base.Start();
+        //int random = Random.Range(1, 4);
+    }
     public override void Attack()
     {
         base.Attack();
